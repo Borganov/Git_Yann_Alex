@@ -2,5 +2,5 @@
 public class AlexandreBerclaz {
 	
 	String salut;
-	int b;
+	int a;
 }
