@@ -1,28 +1,41 @@
 package contact;
 
-import java.util.*;
-import galerie.Galerie;
 
-public class Contact {
+import java.io.IOException;
+import java.io.Serializable;
+import java.util.*;
+
+public class Contact implements Serializable {
 	//Variables
+	private int id;
 	private String lastName;
 	private String firstName;
 	private Date bithdate;
 	private String phoneNumber;
 	private String email;
 	private String internet;
-	private Galerie photoProfil;
 
 
 	//Constructeur
-	public Contact(String lastName, String firstName, String phoneNumber) {
+	public Contact(String lastName, String firstName, String phoneNumber) throws IOException {
 		this.lastName = lastName;
 		this.firstName = firstName;
 		this.phoneNumber = phoneNumber;
+
 	}
 	
 	//Getters and Setters
+	
+	public int getId() {
+		return id;
+	}
 
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	
 	public String getLastName() {
 		return lastName;
 	}
@@ -82,15 +95,12 @@ public class Contact {
 		this.internet = internet;
 	}
 
-
-	public Galerie getPhotoProfil() {
-		return photoProfil;
+	
+	//Méthodes
+	public void modifierContact(){
+		
 	}
 
-
-	public void setPhotoProfil(Galerie photoProfil) {
-		this.photoProfil = photoProfil;
-	}
 	
 
 	
