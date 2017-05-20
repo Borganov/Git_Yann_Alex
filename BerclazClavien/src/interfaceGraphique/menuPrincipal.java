@@ -8,6 +8,7 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -67,7 +68,13 @@ public class menuPrincipal extends interfaceGeneral {
 			//si clique sur contacts
 			if (e.getSource()==contacts){
 				//instantiation fenêtre contacts
-				interfaceContactsList interfaceContacts = new interfaceContactsList();
+				interfaceContactsList interfaceContacts = null;
+				try {
+					interfaceContacts = new interfaceContactsList();
+				} catch (ClassNotFoundException | IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				interfaceContacts.setVisible(true);
 				//fermeture fenêtre actuelle
 				dispose();
