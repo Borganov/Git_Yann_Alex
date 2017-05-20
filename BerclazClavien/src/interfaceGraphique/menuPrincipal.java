@@ -67,7 +67,7 @@ public class menuPrincipal extends interfaceGeneral {
 			//si clique sur contacts
 			if (e.getSource()==contacts){
 				//instantiation fenêtre contacts
-				interfaceContacts interfaceContacts = new interfaceContacts();
+				interfaceContactsList interfaceContacts = new interfaceContactsList();
 				interfaceContacts.setVisible(true);
 				//fermeture fenêtre actuelle
 				dispose();
