@@ -3,6 +3,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="BDD_Contact"/>
 	<classpathentry kind="src" path="Icones"/>
+	<classpathentry kind="src" path="ImagesGallerie"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
