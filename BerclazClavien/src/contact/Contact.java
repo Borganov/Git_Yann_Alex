@@ -6,6 +6,8 @@ import java.io.Serializable;
 import java.util.*;
 
 public class Contact implements Serializable {
+	private static final long serialVersionUID = -3092856711586557318L;
+
 	//Variables
 	private int id;
 	private String lastName;
@@ -102,6 +104,9 @@ public class Contact implements Serializable {
 	}
 
 	
-
+	public String toString()
+	{
+		return this.getFirstName() ;
+	}
 	
 }
