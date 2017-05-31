@@ -40,6 +40,23 @@ public class interfaceContactsList extends interfaceGeneral{
 		
 	}
 	
+	interfaceContactsList(ArrayList<Contact> l) throws ClassNotFoundException, IOException{
+		//Importation des données de BDD_Contact dans l'arrayList
+		contactList = l;
+		
+		listContact = new JList(contactList.toArray()) ;
+
+		
+		add(listContact);	//placement du bouton sur l'écran
+		listContact.setBounds(10,10, 380, 660); //axe x, axe y, largeur, hauteur
+		
+		//ajout des listener
+		Ecouteurs ecouteur = new Ecouteurs();
+		listContact.addListSelectionListener(ecouteur);
+		
+		
+	}
+	
 	
 	
 	

@@ -2,6 +2,7 @@ package interfaceGraphique;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -28,7 +29,7 @@ public class FrameContactModify extends interfaceGeneral{
 	private ArrayList<Contact> list;
 	private int ind;
 	
-	public FrameContactModify(int i, ArrayList<Contact> l){
+	FrameContactModify(int i, ArrayList<Contact> l){
 		list = l;
 		ind = i;
 		//Ajout label prénom
@@ -72,6 +73,17 @@ public class FrameContactModify extends interfaceGeneral{
 				list.get(ind).setFirstName(firstnameF.getText());
 				list.get(ind).setLastName(lastnameF.getText());
 				list.get(ind).setPhoneNumber(phoneF.getText());
+				
+				interfaceContactsList interfaceContacts = null;
+				try {
+					interfaceContacts = new interfaceContactsList(list);
+				} catch (ClassNotFoundException | IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				interfaceContacts.setVisible(true);
+				//fermeture fenêtre actuelle
+				dispose();
 				
 				
 				
