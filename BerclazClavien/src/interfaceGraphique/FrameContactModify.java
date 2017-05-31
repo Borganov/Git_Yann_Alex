@@ -1,5 +1,6 @@
 package interfaceGraphique;
 
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -32,27 +33,33 @@ public class FrameContactModify extends interfaceGeneral{
 	FrameContactModify(int i, ArrayList<Contact> l){
 		list = l;
 		ind = i;
+		Font subtitle= new Font("Verdana",Font.BOLD,13);
+		Font content = new Font("Verdana",Font.BOLD,12);
 		//Ajout label prénom
 		add(firstnameL);
-		firstnameL.setBounds(20	,20, 100, 30); //axe x, axe y, largeur, hauteur
+		firstnameL.setBounds(20	,20, 150, 30); //axe x, axe y, largeur, hauteur
+		firstnameL.setFont(subtitle);
 		//Ajout label nom
 		add(lastnameL);
-		lastnameL.setBounds(20	,50, 100, 30); //axe x, axe y, largeur, hauteur
+		lastnameL.setBounds(20	,50, 150, 30); //axe x, axe y, largeur, hauteur
+		lastnameL.setFont(subtitle);
 		//Ajout label phone
 		add(phoneL);
-		phoneL.setBounds(20	,80, 100, 30); //axe x, axe y, largeur, hauteur
+		phoneL.setBounds(20	,80, 150, 30); //axe x, axe y, largeur, hauteur
+		phoneL.setFont(subtitle);
 		
 		//Ajout field prénom
 		add(firstnameF);
-		firstnameF.setBounds(130,20, 100, 30); //axe x, axe y, largeur, hauteur
+		firstnameF.setBounds(165,20, 200, 30); //axe x, axe y, largeur, hauteur
 		firstnameF.setText(list.get(ind).getFirstName());
+		firstnameF.setFont(content);
 		//Ajout field nom
 		add(lastnameF);
-		lastnameF.setBounds(130,50, 100, 30); //axe x, axe y, largeur, hauteur
+		lastnameF.setBounds(165,50, 200, 30); //axe x, axe y, largeur, hauteur
 		lastnameF.setText(list.get(ind).getLastName());
 		//Ajout field téléphone
 		add(phoneF);
-		phoneF.setBounds(130,80, 100, 30); //axe x, axe y, largeur, hauteur
+		phoneF.setBounds(165,80, 200, 30); //axe x, axe y, largeur, hauteur
 		phoneF.setText(list.get(ind).getPhoneNumber());
 		
 		//Ajout boutton sauvegarder
