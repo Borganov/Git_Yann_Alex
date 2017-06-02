@@ -9,6 +9,7 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
@@ -19,52 +20,39 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 public class interfaceGallerie extends interfaceGeneral {
-
-	
-	
+	  
+	  //stocker le nombre de photos
+	  int nombrePhotos;
+	  File folder = new File("./ImagesGallerie/");
+	  
+	  // grille pour afficher les photos
 	  JPanel gallerie = new JPanel(new GridBagLayout());
+	  
+	  
 	 // JScrollPane scroll = new JScrollPane(panel);
 	  
 	  ///Le gridBagConstraints va définir la position et la taille des éléments
 	  GridBagConstraints gc = new GridBagConstraints();
-	 
-	  JButton a = new JButton(new ImageIcon(getClass().getResource("/1.jpg")));
-	  JButton b = new JButton(new ImageIcon(getClass().getResource("/1.jpg")));
-	  JButton c = new JButton(new ImageIcon(getClass().getResource("/1.jpg")));
-	  JButton d = new JButton(new ImageIcon(getClass().getResource("/1.jpg")));
-	  JButton e = new JButton(new ImageIcon(getClass().getResource("/1.jpg")));
-	  JButton f = new JButton(new ImageIcon(getClass().getResource("/1.jpg")));
-	  JButton g = new JButton(new ImageIcon(getClass().getResource("/1.jpg")));
-	  JButton h = new JButton(new ImageIcon(getClass().getResource("/1.jpg")));
-	
-	  public interfaceGallerie(){
-		  
-		  // remplir en horizontal
-		  gc.fill = GridBagConstraints.HORIZONTAL;
-		  //marge entre les composants
-		  gc.insets = new Insets(5,5,5,5);
-		  // nombre de lignes
-		  gc.weightx = 3;
-		  // nombre de colonnes
-		  gc.weighty = 3;
-		  
-		  a.setMaximumSize(new Dimension(100,100));
-		  a.setMinimumSize(new Dimension(100,100));
-		  
-		  
-		  b.setMaximumSize(new Dimension(100,100));
-		  b.setMinimumSize(new Dimension(100,100));
-		  
-		 // ImageIcon("tonImage.jpg").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
-		  
-		  
-		  gallerie.add(a);
-		  gallerie.add(b);
-
-
-		  add(gallerie);
 
 	  
+	  public interfaceGallerie(){
+		  
+		  //compte le nombre de photos dans ImagesGallerie
+		  File[] list = folder.listFiles();
+		  nombrePhotos = list.length;
+		  JButton[] listePhoto = new JButton[nombrePhotos];
+			
+		  for (int i = 0; i < listePhoto.length; i++) {
+			  listePhoto[i] = new JButton(new ImageIcon(getClass().getResource("/1.jpg")));	
+			  listePhoto[i].setBounds(10+10*i, 10+10*i, 20, 20);
+			  gallerie.add(listePhoto[i]);
+		}
+		  
+
+		  add(gallerie);
+		  gallerie.setLayout(null);
+		  
+		  
 		 //placement de la gallerie
 		 gallerie.setBounds(30, 30, 340, 610);
 
