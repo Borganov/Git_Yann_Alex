@@ -19,7 +19,6 @@ public class MainTest {
 		ArrayList<Contact> contactList = new ArrayList<Contact>();
 		
 		
-		
 
 
 //		contactList.add(new Contact("Clavien", "Yann", "046 548 98 58"));
