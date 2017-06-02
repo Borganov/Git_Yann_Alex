@@ -26,6 +26,10 @@ public class Contact implements Serializable {
 
 	}
 	
+	public Contact() {
+		
+	}
+	
 	//Getters and Setters
 	
 	public int getId() {
@@ -98,15 +102,11 @@ public class Contact implements Serializable {
 	}
 
 	
-	//Méthodes
-	public void modifierContact(){
-		
-	}
 
-	
 	public String toString()
 	{
-		return this.getFirstName() ;
+		String toList = this.getFirstName()+" "+this.getLastName();
+		return toList;
 	}
 	
 }
