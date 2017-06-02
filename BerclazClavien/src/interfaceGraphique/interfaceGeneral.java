@@ -22,6 +22,18 @@ public abstract class interfaceGeneral extends JFrame{
 	
 	private JButton boutonHome = new JButton("");
 	
+	
+	
+	public JButton getBoutonHome() {
+		return boutonHome;
+	}
+
+
+	public void setBoutonHome(JButton boutonHome) {
+		this.boutonHome = boutonHome;
+	}
+
+
 	public interfaceGeneral(){
 	
 		//enlève les boutons de contrôle
@@ -58,26 +70,8 @@ public abstract class interfaceGeneral extends JFrame{
 		//couleur du bouton home
 		boutonHome.setBackground(Color.BLACK);
 		
-		//ajout des listeners
-		Ecouteurs ecouteur = new Ecouteurs();
-		boutonHome.addActionListener(ecouteur);
 	}
 	
-	
-public class Ecouteurs implements ActionListener{
-		//définition du clique sur le bouton home --> retour au menuPrincipal
-		public void actionPerformed(ActionEvent e){
-			//si on clique sur le bouton home
-			if (e.getSource()==boutonHome){
-				//instantiation nouvelle fenêtre
-				menuPrincipal menuPrincipal = new menuPrincipal();
-				menuPrincipal.setVisible(true);
-				//fermeture de la fênetre actuelle
-				dispose();
-			}
-
-		}
-	}
 }
 
 

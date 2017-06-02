@@ -23,6 +23,7 @@ public class interfaceGallerie extends interfaceGeneral {
 	 
 	
 	  public interfaceGallerie(){
+		 
 		
 		  add(panel);
 

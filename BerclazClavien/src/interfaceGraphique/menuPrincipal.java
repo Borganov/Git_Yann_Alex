@@ -60,6 +60,7 @@ public class menuPrincipal extends interfaceGeneral {
 		Ecouteurs ecouteur = new Ecouteurs();
 		contacts.addActionListener(ecouteur);
 		gallerie.addActionListener(ecouteur);
+		getBoutonHome().addActionListener(ecouteur);
 	}
 	
 	public class Ecouteurs implements ActionListener{
@@ -85,6 +86,15 @@ public class menuPrincipal extends interfaceGeneral {
 				interfaceGallerie interfaceGallerie = new interfaceGallerie();
 				interfaceGallerie.setVisible(true);
 				//fermeture fenêtre actuelle
+				dispose();
+
+			}
+			
+			if (e.getSource()==getBoutonHome()){
+				//instantiation nouvelle fenêtre
+				menuPrincipal menuPrincipal = new menuPrincipal();
+				menuPrincipal.setVisible(true);
+				//fermeture de la fênetre actuelle
 				dispose();
 			}
 			
