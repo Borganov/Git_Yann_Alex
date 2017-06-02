@@ -27,6 +27,8 @@ public class interfaceGallerie extends interfaceGeneral {
 	  
 	  // grille pour afficher les photos
 	  JPanel gallerie = new JPanel(new GridBagLayout());
+
+	  private ArrayList<JButton> listePhoto = new ArrayList<JButton>();
 	  
 	  
 	 // JScrollPane scroll = new JScrollPane(panel);
@@ -40,18 +42,16 @@ public class interfaceGallerie extends interfaceGeneral {
 		  //compte le nombre de photos dans ImagesGallerie
 		  File[] list = folder.listFiles();
 		  nombrePhotos = list.length;
-		  JButton[] listePhoto = new JButton[nombrePhotos];
+		 
 			
-		  for (int i = 0; i < listePhoto.length; i++) {
-			  listePhoto[i] = new JButton(new ImageIcon(getClass().getResource("/1.jpg")));	
-			  listePhoto[i].setBounds(10+10*i, 10+10*i, 20, 20);
-			  gallerie.add(listePhoto[i]);
+		  for (int i = 0; i < nombrePhotos; i++) {
+			  listePhoto.add(new JButton(new ImageIcon(list[i].getPath())));
+			  listePhoto.get(i).setBounds(10+10*i, 10+10*i, 20, 20);
+			  gallerie.add(listePhoto.get(i));
 		}
-		  
 
 		  add(gallerie);
 		  gallerie.setLayout(null);
-		  
 		  
 		 //placement de la gallerie
 		 gallerie.setBounds(30, 30, 340, 610);
