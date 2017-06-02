@@ -42,12 +42,14 @@ public class interfaceGallerie extends interfaceGeneral {
 		  //compte le nombre de photos dans ImagesGallerie
 		  File[] list = folder.listFiles();
 		  nombrePhotos = list.length;
-		 
-			
-		  for (int i = 0; i < nombrePhotos; i++) {
-			  listePhoto.add(new JButton(new ImageIcon(list[i].getPath())));
-			  listePhoto.get(i).setBounds(10+10*i, 10+10*i, 20, 20);
-			  gallerie.add(listePhoto.get(i));
+		 int k=0;
+		for(int j = 0; j<nombrePhotos/3;j++){
+		  for (int i = 0; i < 3; i++) {	  
+			  listePhoto.add(new JButton(new ImageIcon(list[k].getPath())));
+			  listePhoto.get(k).setBounds(5+i*105, 5+j*105, 100, 100);
+			  gallerie.add(listePhoto.get(k));
+			  k++;
+		  }
 		}
 
 		  add(gallerie);
