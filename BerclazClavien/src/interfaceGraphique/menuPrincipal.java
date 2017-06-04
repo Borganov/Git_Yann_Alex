@@ -61,6 +61,7 @@ public class menuPrincipal extends interfaceGeneral {
 		contacts.addActionListener(ecouteur);
 		gallerie.addActionListener(ecouteur);
 		getBoutonHome().addActionListener(ecouteur);
+		getBoutonOff().addActionListener(ecouteur);
 	}
 	
 	public class Ecouteurs implements ActionListener{
@@ -98,6 +99,11 @@ public class menuPrincipal extends interfaceGeneral {
 				dispose();
 			}
 			
+			if (e.getSource()==getBoutonOff()){
+				//éteindre le téléphone
+				dispose();
+			}
+		
 		}
 	}
 

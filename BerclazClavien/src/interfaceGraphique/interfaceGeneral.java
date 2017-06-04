@@ -21,16 +21,23 @@ public abstract class interfaceGeneral extends JFrame{
 	private JPanel panelWest = new JPanel();
 	
 	private JButton boutonHome = new JButton("");
+	private JButton boutonOff = new JButton("");
 	
-	
-	
+	// getters et setters pour les boutons Home et Off
 	public JButton getBoutonHome() {
 		return boutonHome;
 	}
 
-
 	public void setBoutonHome(JButton boutonHome) {
 		this.boutonHome = boutonHome;
+	}
+
+	public JButton getBoutonOff() {
+		return boutonOff;
+	}
+
+	public void setBoutonOff(JButton boutonOff) {
+		this.boutonOff = boutonOff;
 	}
 
 
@@ -58,18 +65,27 @@ public abstract class interfaceGeneral extends JFrame{
 		add(panelNorth, BorderLayout.NORTH);
 		panelNorth.setBounds(0, 0, 400, 10);
 		panelNorth.setBackground( Color.BLACK);
+		panelNorth.setLayout(null);
 		
 		add(panelSouth, BorderLayout.SOUTH);
 		panelSouth.setBounds(0, 660, 400, 40);
 		panelSouth.setBackground(Color.BLACK);
 		
+		
 		//ajout du bouton home
 		panelSouth.add(boutonHome);
-		//dimensionner un bouton
+		//dimensionner le bouton home
 		boutonHome.setPreferredSize(new Dimension (75, 30));
 		//couleur du bouton home
 		boutonHome.setBackground(Color.BLACK);
 		
+
+		//ajout du bouton off
+		panelNorth.add(boutonOff);
+		//couleur du bouton off
+		boutonOff.setBackground(Color.BLACK);
+		//placement du bouton
+		boutonOff.setBounds(320, 3, 50, 5);
 	}
 	
 }

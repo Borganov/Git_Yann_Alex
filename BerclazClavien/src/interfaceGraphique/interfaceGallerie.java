@@ -1,7 +1,9 @@
 package interfaceGraphique;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -25,23 +27,39 @@ public class interfaceGallerie extends interfaceGeneral {
 	  int nombrePhotos;
 	  File folder = new File("./ImagesGallerie/");
 	  
+	  JPanel panelCenter = new JPanel();
+
 	  // grille pour afficher les photos
 	  JPanel gallerie = new JPanel(new GridBagLayout());
 
 	  private ArrayList<JButton> listePhoto = new ArrayList<JButton>();
 	  
 	  
-	 // JScrollPane scroll = new JScrollPane(panel);
+	  JScrollPane scroll = new JScrollPane(panelCenter);
+	 
 	  
 	  ///Le gridBagConstraints va définir la position et la taille des éléments
 	  GridBagConstraints gc = new GridBagConstraints();
 
 	  
 	  public interfaceGallerie(){
-		  
+		
+		add(panelCenter, BorderLayout.CENTER);
+		panelCenter.setBounds(10,10,380,650);
+		panelCenter.setLayout(null);
+		  //ajout de la gallerie
+		panelCenter.add(gallerie);
+		gallerie.setLayout(null);
+		 //placement de la gallerie
+		gallerie.setBounds(30, 30, 340, 610);
+		panelCenter.add(scroll);
+		scroll.setBounds(10, 10, 10, 630);
+		scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		  //compte le nombre de photos dans ImagesGallerie
 		  File[] list = folder.listFiles();
 		  nombrePhotos = list.length;
+		  
+		  //instancie les photos de ImagesGallerie et les mets dans la grille
 		 int k=0;
 		for(int j = 0; j<nombrePhotos/3;j++){
 		  for (int i = 0; i < 3; i++) {	  
@@ -51,12 +69,7 @@ public class interfaceGallerie extends interfaceGeneral {
 			  k++;
 		  }
 		}
-
-		  add(gallerie);
-		  gallerie.setLayout(null);
-		  
-		 //placement de la gallerie
-		 gallerie.setBounds(30, 30, 340, 610);
+		
 
 	}
 }
