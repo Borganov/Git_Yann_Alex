@@ -84,7 +84,7 @@ public class menuPrincipal extends interfaceGeneral {
 			//si clique sur gallerie
 			if (e.getSource()==gallerie){
 				//instantiation fenêtre gallerie
-				interfaceGallerie interfaceGallerie = new interfaceGallerie();
+				interfaceGallerie interfaceGallerie = new interfaceGallerie(1);
 				interfaceGallerie.setVisible(true);
 				//fermeture fenêtre actuelle
 				dispose();
