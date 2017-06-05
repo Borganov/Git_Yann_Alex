@@ -35,7 +35,7 @@ public class interfaceContactsList extends interfaceGeneral{
 	
 	interfaceContactsList() throws ClassNotFoundException, IOException{
 		//Importation des données de BDD_Contact dans l'arrayList
-		DownloadDataContact("./BDD_Contact",contactList);
+		DownloadDataContact("./BDD_Contacts",contactList);
 		
 		listContact = new JList(contactList.toArray()) ;
 
@@ -89,7 +89,7 @@ public class interfaceContactsList extends interfaceGeneral{
 			
 			for (int i = 0; i < list.length; i++) {
 				
-				FileInputStream in = new FileInputStream( "./BDD_Contact/" + list[i].getName());
+				FileInputStream in = new FileInputStream( "./BDD_Contacts/" + list[i].getName());
 				ObjectInputStream ois = new ObjectInputStream( in );
 				listcontact.add( (Contact) ois.readObject());
 				ois.close(); 	
@@ -148,7 +148,7 @@ public class interfaceContactsList extends interfaceGeneral{
 	private static void UploadDataContact(ArrayList<Contact> listcontact) throws IOException {
 		
 		for (int i = 0; i < listcontact.size(); i++) {
-			 FileOutputStream out = new FileOutputStream("./BDD_Contact/" + listcontact.get(i).getLastName()+listcontact.get(i).getFirstName()+".ser");
+			 FileOutputStream out = new FileOutputStream("./BDD_Contacts/" + listcontact.get(i).getLastName()+listcontact.get(i).getFirstName()+".ser");
 			 ObjectOutputStream oos = new ObjectOutputStream( out );
 			 oos.writeObject(listcontact.get(i));
 			 oos.close(); 

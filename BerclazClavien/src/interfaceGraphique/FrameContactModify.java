@@ -146,7 +146,7 @@ public class FrameContactModify extends interfaceGeneral{
 		private static void UploadDataContact(ArrayList<Contact> listcontact) throws IOException {
 			
 			for (int i = 0; i < listcontact.size(); i++) {
-				 FileOutputStream out = new FileOutputStream("./BDD_Contact/" + listcontact.get(i).getLastName()+listcontact.get(i).getFirstName()+".ser");
+				 FileOutputStream out = new FileOutputStream("./BDD_Contacts/" + listcontact.get(i).getLastName()+listcontact.get(i).getFirstName()+".ser");
 				 ObjectOutputStream oos = new ObjectOutputStream( out );
 				 oos.writeObject(listcontact.get(i));
 				 oos.close(); 
