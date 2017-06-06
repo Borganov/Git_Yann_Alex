@@ -7,31 +7,33 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 
 public class FrameGallerie extends FrameGeneral {
 	  
 	  //stocker le nombre de photos
-	  int nombrePhotos;
-	  File folder = new File("./ImagesGallerie/");
+	 private int nombrePhotos;
+	 private File folder = new File("./ImagesGallerie/");
 	  
 	  //Boutton avancer et reculer
-	  JButton next = new JButton("Suivant");
-	  JButton preview = new JButton("Précédent");
-	  
+	  private JButton next = new JButton(new ImageIcon(getClass().getResource("/next.png")));
+	  private JButton preview = new JButton(new ImageIcon(getClass().getResource("/previous.png")));
+	  private JButton addPhoto = new JButton("+");
 
-	  JPanel gallerie = new JPanel();
+	 private JPanel gallerie = new JPanel();
 
 	  private ArrayList<JButton> listePhoto = new ArrayList<JButton>();
 	  
 	  //1 = 15 première photo, 2 photo 16 à 30...
 	  private int noPage;
-
+	  private int t;
+	  
 	  public FrameGallerie(int n){
 		  this.noPage = n;
 		  add(gallerie);
 		  gallerie.setLayout(null);
-		  gallerie.setBounds(10, 10, 350, 550);
+		  gallerie.setBounds(40, 40, 350, 550);
 
 		  //compte le nombre de photos dans ImagesGallerie
 		  File[] list = folder.listFiles();
@@ -39,15 +41,42 @@ public class FrameGallerie extends FrameGeneral {
 		  
 		  //Ajout Boutton avancer et reculer
 		  Ecouteurs ecouteur = new Ecouteurs();
-		  add(next);
-		  next.addActionListener(ecouteur);
-		  next.setBounds(150, 590, 100, 20);
 		  
+		  //teste pour déterminer le nombre de pages
+		  t=nombrePhotos/15;
+		  //ajout du bouton suivant
+		  //si les pages sont complètes
+		  if(t*15==nombrePhotos){
+			  if(noPage<t){
+				  add(next);
+				  next.setContentAreaFilled(false);
+				  next.setBorder(null);
+				  next.addActionListener(ecouteur);
+				  next.setBounds(300, 590, 70, 40);
+			  }
+		  }
+		  //si les pages sont incomplètes
+		  if(t*15!=nombrePhotos){
+			  if(noPage<t+1){
+				  add(next);
+				  next.setContentAreaFilled(false);
+				  next.setBorder(null);
+				  next.addActionListener(ecouteur);
+				  next.setBounds(300, 590, 70, 40);
+			  }
+		  }
+		  //ajout du bouton précédent
+		  if(noPage!=1){
 		  add(preview);
+		  preview.setContentAreaFilled(false);
+		  preview.setBorder(null);
 		  preview.addActionListener(ecouteur);
-		  preview.setBounds(20, 590, 120, 20);
+		  preview.setBounds(30, 590, 70, 40);
+		  }
 		  
-		  
+		  add(addPhoto);
+		  addPhoto.addActionListener(ecouteur);
+		  addPhoto.setBounds(150,590,70,40);
 		  
 		  //instancie les photos de ImagesGallerie et les mets dans la grille
 		 int k=(noPage-1)*15;
@@ -84,8 +113,15 @@ public class FrameGallerie extends FrameGeneral {
 					dispose();
 				}
 				
+				if(e.getSource()==addPhoto){
+					JFileChooser chooser = new JFileChooser(); 
+					chooser.setCurrentDirectory(new File("/")); 
+					chooser.changeToParentDirectory(); 
+					chooser.showOpenDialog(null);
+				}
 			}
 			
+
 		}
 
 }
