@@ -1,20 +1,24 @@
 package frameGraphique;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
+
+import com.sun.prism.Graphics;
+import com.sun.prism.Image;
 
 import contact.Contact;
 
@@ -29,13 +33,14 @@ public class FrameContactModify extends FrameGeneral{
 	JTextField lastnameF = new JTextField();
 	JTextField phoneF = new JTextField();
 	
+	
 	JButton save = new JButton(new ImageIcon(getClass().getResource("/save.png")));
 	JButton delete = new JButton(new ImageIcon(getClass().getResource("/delete.png")));
 	
 	private ArrayList<Contact> list;
 	private int ind;
 	
-	FrameContactModify(int i, ArrayList<Contact> l){
+	FrameContactModify(int i, ArrayList<Contact> l) throws IOException{
 		list = l;
 		ind = i;
 		Font subtitle= new Font("Verdana",Font.BOLD,13);
@@ -52,6 +57,13 @@ public class FrameContactModify extends FrameGeneral{
 		add(phoneL);
 		phoneL.setBounds(20	,80, 150, 30); //axe x, axe y, largeur, hauteur
 		phoneL.setFont(subtitle);
+		
+		
+		ImageIcon photoProfil = new ImageIcon("./ImagesGallerie/1.jpg");
+		JButton photoProfilBoutton = new JButton(photoProfil);
+		add(photoProfilBoutton);
+		photoProfilBoutton.setBounds(150,300,150,150);
+
 		
 		//Ajout field prénom
 		add(firstnameF);
@@ -72,14 +84,16 @@ public class FrameContactModify extends FrameGeneral{
 		//Ajout boutton sauvegarder
 		add(save);
 		save.setBounds(50, 550, 80, 80);
-		save.setBackground(null);
+		save.setContentAreaFilled(false);
+		save.setBorderPainted(false);
 		Ecouteurs ecouteur = new Ecouteurs();
 		save.addActionListener(ecouteur);
 		
 		//Ajout boutton supprimer
 		add(delete);
 		delete.setBounds(150, 550, 80, 80);
-		delete.setBackground(null);
+		delete.setContentAreaFilled(false);
+		delete.setBorderPainted(false);
 		delete.addActionListener(ecouteur);
 		
 	}

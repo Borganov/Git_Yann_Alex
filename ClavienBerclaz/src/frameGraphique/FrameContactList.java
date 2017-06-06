@@ -109,7 +109,13 @@ public class FrameContactList extends FrameGeneral{
 		public void valueChanged(ListSelectionEvent e) {
 			int contactSelected = (e.getFirstIndex());
 			//instantiation nouvelle fenêtre
-			FrameContactModify frameContactModify = new FrameContactModify(contactSelected, contactList);
+			FrameContactModify frameContactModify = null;
+			try {
+				frameContactModify = new FrameContactModify(contactSelected, contactList);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			frameContactModify.setVisible(true);
 			//fermeture de la fênetre actuelle
 			dispose();
