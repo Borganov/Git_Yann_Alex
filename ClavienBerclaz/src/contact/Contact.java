@@ -3,7 +3,6 @@ package contact;
 
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.*;
 
 public class Contact implements Serializable {
 	private static final long serialVersionUID = -3092856711586557318L;
@@ -12,10 +11,9 @@ public class Contact implements Serializable {
 	private int id;
 	private String lastName;
 	private String firstName;
-	private Date bithdate;
 	private String phoneNumber;
 	private String email;
-	private String internet;
+	private String civilite;
 
 
 	//Constructeur
@@ -60,15 +58,14 @@ public class Contact implements Serializable {
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-
-
-	public Date getBithdate() {
-		return bithdate;
+	
+	public String getCivilite() {
+		return civilite;
 	}
 
 
-	public void setBithdate(Date bithdate) {
-		this.bithdate = bithdate;
+	public void setCivilite(String civilite) {
+		this.civilite = civilite;
 	}
 
 
@@ -90,18 +87,6 @@ public class Contact implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-
-	public String getInternet() {
-		return internet;
-	}
-
-
-	public void setInternet(String internet) {
-		this.internet = internet;
-	}
-
-	
 
 	public String toString()
 	{

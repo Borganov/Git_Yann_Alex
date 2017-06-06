@@ -3,35 +3,34 @@ package frameGraphique;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
-
-import com.sun.prism.Graphics;
-import com.sun.prism.Image;
 
 import contact.Contact;
 
 public class FrameContactModify extends FrameGeneral{
 	
 	
+	JLabel civiliteL = new JLabel("Civilité :");
 	JLabel firstnameL = new JLabel("Prénom :");
 	JLabel lastnameL = new JLabel("Nom :");
 	JLabel phoneL = new JLabel("N° de téléphone :");
+	JLabel title = new JLabel("Modifier un contact");
 	
 	JTextField firstnameF = new JTextField();
 	JTextField lastnameF = new JTextField();
 	JTextField phoneF = new JTextField();
+	
+	String[] civiliteList = {"Monsieur", "Madame"};
+	JComboBox<String> civiliteC = new JComboBox<String>(civiliteList);
 	
 	
 	JButton save = new JButton(new ImageIcon(getClass().getResource("/save.png")));
@@ -43,47 +42,68 @@ public class FrameContactModify extends FrameGeneral{
 	FrameContactModify(int i, ArrayList<Contact> l) throws IOException{
 		list = l;
 		ind = i;
-		Font subtitle= new Font("Verdana",Font.BOLD,13);
-		Font content = new Font("Verdana",Font.BOLD,12);
+		Font titleFont = new Font("Verdanan", Font.BOLD, 24);
+		Font subtitleFont= new Font("Verdana",Font.BOLD,13);
+		Font contentFont = new Font("Verdana",Font.BOLD,12);
+		
+		
+		//Ajout du titre de la fenêtre
+		add(title);
+		title.setBounds(75,30,300,20);
+		title.setFont(titleFont);
+		
+		//Ajout label Civilité
+		add(civiliteL);
+		civiliteL.setBounds(25	,245, 150, 30); //axe x, axe y, largeur, hauteur
+		civiliteL.setFont(subtitleFont);
+		
 		//Ajout label prénom
 		add(firstnameL);
-		firstnameL.setBounds(20	,20, 150, 30); //axe x, axe y, largeur, hauteur
-		firstnameL.setFont(subtitle);
+		firstnameL.setBounds(25	,275, 150, 30); //axe x, axe y, largeur, hauteur
+		firstnameL.setFont(subtitleFont);
+		
 		//Ajout label nom
 		add(lastnameL);
-		lastnameL.setBounds(20	,50, 150, 30); //axe x, axe y, largeur, hauteur
-		lastnameL.setFont(subtitle);
+		lastnameL.setBounds(25 ,305, 150, 30); //axe x, axe y, largeur, hauteur
+		lastnameL.setFont(subtitleFont);
+		
 		//Ajout label phone
 		add(phoneL);
-		phoneL.setBounds(20	,80, 150, 30); //axe x, axe y, largeur, hauteur
-		phoneL.setFont(subtitle);
+		phoneL.setBounds(25	,335, 350, 30); //axe x, axe y, largeur, hauteur
+		phoneL.setFont(subtitleFont);
 		
 		
 		ImageIcon photoProfil = new ImageIcon("./ImagesGallerie/1.jpg");
 		JButton photoProfilBoutton = new JButton(photoProfil);
 		add(photoProfilBoutton);
-		photoProfilBoutton.setBounds(150,300,150,150);
+		photoProfilBoutton.setBounds(25,75,150,150);
 
 		
 		//Ajout field prénom
 		add(firstnameF);
-		firstnameF.setBounds(165,20, 200, 30); //axe x, axe y, largeur, hauteur
+		firstnameF.setBounds(170,275, 200, 30); //axe x, axe y, largeur, hauteur
 		firstnameF.setText(list.get(ind).getFirstName());
-		firstnameF.setFont(content);
+		firstnameF.setFont(contentFont);
 		//Ajout field nom
 		add(lastnameF);
-		lastnameF.setBounds(165,50, 200, 30); //axe x, axe y, largeur, hauteur
+		lastnameF.setBounds(170,305, 200, 30); //axe x, axe y, largeur, hauteur
 		lastnameF.setText(list.get(ind).getLastName());
-		lastnameF.setFont(content);
+		lastnameF.setFont(contentFont);
 		//Ajout field téléphone
 		add(phoneF);
-		phoneF.setBounds(165,80, 200, 30); //axe x, axe y, largeur, hauteur
+		phoneF.setBounds(170,335, 200, 30); //axe x, axe y, largeur, hauteur
 		phoneF.setText(list.get(ind).getPhoneNumber());
-		phoneF.setFont(content);
+		phoneF.setFont(contentFont);
+		
+		//Ajout ComboBox Civilité
+		add(civiliteC);
+		civiliteC.setBounds(170,245, 200, 27); //axe x, axe y, largeur, hauteur
+		civiliteC.setSelectedItem(list.get(ind).getCivilite());
+		civiliteC.setFont(contentFont);
 		
 		//Ajout boutton sauvegarder
 		add(save);
-		save.setBounds(50, 550, 80, 80);
+		save.setBounds(100, 580, 80, 80);
 		save.setContentAreaFilled(false);
 		save.setBorderPainted(false);
 		Ecouteurs ecouteur = new Ecouteurs();
@@ -91,7 +111,7 @@ public class FrameContactModify extends FrameGeneral{
 		
 		//Ajout boutton supprimer
 		add(delete);
-		delete.setBounds(150, 550, 80, 80);
+		delete.setBounds(220, 580, 80, 80);
 		delete.setContentAreaFilled(false);
 		delete.setBorderPainted(false);
 		delete.addActionListener(ecouteur);
@@ -105,6 +125,7 @@ public class FrameContactModify extends FrameGeneral{
 			//si clique sur gallerie
 			if (e.getSource()==save){
 				
+				list.get(ind).setCivilite((String)civiliteC.getSelectedItem());;
 				list.get(ind).setFirstName(firstnameF.getText());
 				list.get(ind).setLastName(lastnameF.getText());
 				list.get(ind).setPhoneNumber(phoneF.getText());
