@@ -1,5 +1,7 @@
 package frameGraphique;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -39,9 +41,10 @@ public class FrameGallerie extends FrameGeneral {
 		  File[] list = folder.listFiles();
 		  nombrePhotos = list.length;
 		  
-		  //Ajout Boutton avancer et reculer
+		  //Ajout écouteurs
 		  Ecouteurs ecouteur = new Ecouteurs();
-		  
+		  getBoutonHome().addActionListener(ecouteur);
+		  getBoutonOff().addActionListener(ecouteur);
 		  //teste pour déterminer le nombre de pages
 		  t=nombrePhotos/15;
 		  //ajout du bouton suivant
@@ -55,7 +58,7 @@ public class FrameGallerie extends FrameGeneral {
 				  next.setBounds(300, 590, 70, 40);
 			  }
 		  }
-		  //si les pages sont incomplètes
+		  //ajout du bouton suivant et précédent
 		  if(t*15!=nombrePhotos){
 			  if(noPage<t+1){
 				  add(next);
@@ -63,15 +66,13 @@ public class FrameGallerie extends FrameGeneral {
 				  next.setBorder(null);
 				  next.addActionListener(ecouteur);
 				  next.setBounds(300, 590, 70, 40);
+			  } else{
+				  add(preview);
+				  preview.setContentAreaFilled(false);
+				  preview.setBorder(null);
+				  preview.addActionListener(ecouteur);
+				  preview.setBounds(30, 590, 70, 40);
 			  }
-		  }
-		  //ajout du bouton précédent
-		  if(noPage!=1){
-		  add(preview);
-		  preview.setContentAreaFilled(false);
-		  preview.setBorder(null);
-		  preview.addActionListener(ecouteur);
-		  preview.setBounds(30, 590, 70, 40);
 		  }
 		  
 		  add(addPhoto);
@@ -87,6 +88,8 @@ public class FrameGallerie extends FrameGeneral {
 			  if(k<nombrePhotos){
 			  listePhoto.add(new JButton(new ImageIcon(list[k].getPath())));
 			  listePhoto.get(y).setBounds(5+i*105, 5+j*105, 100, 100);
+			  Ecouteur ecouteur_photo = new Ecouteur(list, k);
+			  listePhoto.get(y).addActionListener(ecouteur_photo);
 			  gallerie.add(listePhoto.get(y));
 			  k++;
 			  y++;
@@ -120,9 +123,34 @@ public class FrameGallerie extends FrameGeneral {
 					chooser.showOpenDialog(null);
 					int valeuretour = chooser.showSaveDialog(gallerie);
 				}
+				
+				if (e.getSource()==getBoutonHome()){
+					//instantiation nouvelle fenêtre
+					FramePrincipal menuPrincipal = new FramePrincipal();
+					menuPrincipal.setVisible(true);
+					//fermeture de la fênetre actuelle
+					dispose();
+				}
+				
+				if (e.getSource()==getBoutonOff()){
+					//éteindre le téléphone
+					dispose();
+				}
+		}
+			
+	}
+		
+		public class Ecouteur implements ActionListener{
+			public Ecouteur(File [] list, int k){// int k ){//, path ?, File ?) {
+				
+			}
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				FrameDefile defile = new FrameDefile();
+				defile.setVisible(true);
+				System.out.println();
+				dispose();
 			}
 			
-
 		}
-
 }
