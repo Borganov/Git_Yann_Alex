@@ -11,16 +11,16 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import contact.Contact;
-import frameGraphique.FramePrincipal.Ecouteurs;
 
 public class FrameContactList extends FrameGeneral{
 
@@ -30,10 +30,15 @@ public class FrameContactList extends FrameGeneral{
 	private JList listContact ;
 	
 	//Ajout du boutton nouveau contact
-	JButton newContact = new JButton("Ajouter un contact");
+	JButton newContact = new JButton(new ImageIcon(getClass().getResource("/add.png")));
 	
 	//Font de la liste
 	Font fontList = new Font("Verdana",Font.BOLD,16);
+	//Font du titre
+	Font titleFont = new Font("Verdanan", Font.BOLD, 24);
+	
+	//Ajout du titre de Contact liste
+	JLabel titre = new JLabel("Liste de contacts");
 	
 	
 	FrameContactList() throws ClassNotFoundException, IOException{
@@ -44,12 +49,18 @@ public class FrameContactList extends FrameGeneral{
 		
 		//Ajout de la liste de contact avec le scroll
 		JScrollPane scroll = new JScrollPane();
-		scroll.setBounds(10,10,382,600);
+		scroll.setBounds(10,70,382,600);
 		scroll.setViewportView(listContact);
 		listContact.setLayoutOrientation(JList.VERTICAL);		
 		add(scroll);
 		listContact.setFont(fontList);
 		listContact.setBorder(new EmptyBorder(10,10,10,10));
+		
+		//Ajout du titre
+		add(titre);
+		titre.setFont(titleFont);
+		titre.setBounds(75,30,300,20);
+		
 
 		
 		//ajout des listener
@@ -59,7 +70,9 @@ public class FrameContactList extends FrameGeneral{
 		
 		//Ajout boutton nouveau contact
 		add(newContact);
-		newContact.setBounds(140, 620, 180, 20);
+		newContact.setBounds(320, 15, 50, 50);
+		newContact.setContentAreaFilled(false);
+		newContact.setBorderPainted(false);
 		newContact.addActionListener(ecouteur);
 		
 		
@@ -74,24 +87,32 @@ public class FrameContactList extends FrameGeneral{
 		
 		//Ajout de la liste de contact avec le scroll
 		JScrollPane scroll = new JScrollPane();
-		scroll.setBounds(10,10,382,600);
+		scroll.setBounds(10,70,382,600);
 		scroll.setViewportView(listContact);
 		listContact.setLayoutOrientation(JList.VERTICAL);		
 		add(scroll);
 		listContact.setFont(fontList);
 		listContact.setBorder(new EmptyBorder(10,10,10,10));
 		
+		//Ajout du titre
+		add(titre);
+		titre.setFont(titleFont);
+		titre.setBounds(75,30,300,20);
+				
+
+				
 		//ajout des listener
 		Ecouteurs ecouteur = new Ecouteurs();
 		listContact.addListSelectionListener(ecouteur);
 		getBoutonHome().addActionListener(ecouteur);
-		
+			
 		//Ajout boutton nouveau contact
 		add(newContact);
-		newContact.setBounds(140, 620, 150, 20);
+		newContact.setBounds(320, 15, 50, 50);
+		newContact.setContentAreaFilled(false);
+		newContact.setBorderPainted(false);
 		newContact.addActionListener(ecouteur);
-		
-		
+			
 	}
 	
 	//Méthode de désérialisation des fichiers présent dans le fichier BDD_Contact
