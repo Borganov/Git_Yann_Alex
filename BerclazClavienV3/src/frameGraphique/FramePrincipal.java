@@ -84,11 +84,9 @@ public class FramePrincipal extends FrameGeneral {
 			//si clique sur gallerie
 			if (e.getSource()==gallerie){
 				//instantiation fenêtre gallerie
-				//FrameGallerie interfaceGallerie = new FrameGallerie(1,1);
-				//interfaceGallerie.setVisible(true);
+				FrameGallerie interfaceGallerie = new FrameGallerie(1,1);
+				interfaceGallerie.setVisible(true);
 				//fermeture fenêtre actuelle
-				
-
 				dispose();
 
 			}
