@@ -1,6 +1,8 @@
 package frameGraphique;
 
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileOutputStream;
@@ -35,6 +37,7 @@ public class FrameContactModify extends FrameGeneral{
 	
 	JButton save = new JButton(new ImageIcon(getClass().getResource("/save.png")));
 	JButton delete = new JButton(new ImageIcon(getClass().getResource("/delete.png")));
+	JButton photoMod = new JButton(new ImageIcon(getClass().getResource("/delete.png")));
 	
 	private ArrayList<Contact> list;
 	private int ind;
@@ -72,11 +75,22 @@ public class FrameContactModify extends FrameGeneral{
 		phoneL.setBounds(25	,335, 350, 30); //axe x, axe y, largeur, hauteur
 		phoneL.setFont(subtitleFont);
 		
+		//Ajout de la photo de profil et redimensionnement de la photo pour qu'elle s'intègre parfaitement au boutton
+		JButton btnpic = new JButton(new ImageIcon(new ImageIcon("./ImagesGallerie/1.jpg").getImage().getScaledInstance(-1, 110, Image.SCALE_FAST)));
+		btnpic.setPreferredSize(new Dimension(150	, 150));
+		btnpic.setOpaque(false);
+		btnpic.setContentAreaFilled(false);
+		btnpic.setBorderPainted(false);
+		add(btnpic);
+		btnpic.setBounds(25,75,150,150);
 		
-		ImageIcon photoProfil = new ImageIcon("./ImagesGallerie/1.jpg");
-		JButton photoProfilBoutton = new JButton(photoProfil);
-		add(photoProfilBoutton);
-		photoProfilBoutton.setBounds(25,75,150,150);
+		//Ajout du boutton modifier image de profil
+		add(photoMod);
+		photoMod.setBounds(200, 145, 80, 80);
+		photoMod.setContentAreaFilled(false);
+		photoMod.setBorderPainted(false);
+		Ecouteurs ecouteur = new Ecouteurs();
+		photoMod.addActionListener(ecouteur);
 
 		
 		//Ajout field prénom
@@ -106,7 +120,6 @@ public class FrameContactModify extends FrameGeneral{
 		save.setBounds(100, 580, 80, 80);
 		save.setContentAreaFilled(false);
 		save.setBorderPainted(false);
-		Ecouteurs ecouteur = new Ecouteurs();
 		save.addActionListener(ecouteur);
 		
 		//Ajout boutton supprimer
@@ -138,6 +151,23 @@ public class FrameContactModify extends FrameGeneral{
 					e1.printStackTrace();
 				}
 				interfaceContacts.setVisible(true);
+				//fermeture fenêtre actuelle
+				dispose();
+				
+				
+				
+			}
+			
+			if (e.getSource()==photoMod){
+				
+				list.get(ind).setCivilite((String)civiliteC.getSelectedItem());;
+				list.get(ind).setFirstName(firstnameF.getText());
+				list.get(ind).setLastName(lastnameF.getText());
+				list.get(ind).setPhoneNumber(phoneF.getText());
+				
+				FrameGallerie selectPicture = null;
+				selectPicture = new FrameGallerie(1);
+				selectPicture.setVisible(true);
 				//fermeture fenêtre actuelle
 				dispose();
 				

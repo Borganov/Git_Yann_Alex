@@ -12,7 +12,7 @@ public class Contact implements Serializable {
 	private String lastName;
 	private String firstName;
 	private String phoneNumber;
-	private String email;
+	private String profilPath;
 	private String civilite;
 
 
@@ -79,13 +79,13 @@ public class Contact implements Serializable {
 	}
 
 
-	public String getEmail() {
-		return email;
+	public String getprofilPath() {
+		return profilPath;
 	}
 
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setEmail(String profilPath) {
+		this.profilPath = profilPath;
 	}
 
 	public String toString()
