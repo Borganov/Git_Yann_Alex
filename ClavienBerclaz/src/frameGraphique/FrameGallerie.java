@@ -118,6 +118,7 @@ public class FrameGallerie extends FrameGeneral {
 					chooser.setCurrentDirectory(new File("/")); 
 					chooser.changeToParentDirectory(); 
 					chooser.showOpenDialog(null);
+					int valeuretour = chooser.showSaveDialog(gallerie);
 				}
 			}
 			
