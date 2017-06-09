@@ -23,17 +23,16 @@ public class FrameDefile extends FrameGeneral{
 	private JButton next = new JButton(new ImageIcon(getClass().getResource("/next.png")));
 	private JButton previous = new JButton(new ImageIcon(getClass().getResource("/previous.png"))); 
 	private JButton delete = new JButton(new ImageIcon(getClass().getResource("/delete.png")));
+	private JButton retour = new JButton(new ImageIcon(getClass().getResource("/ic_list_black_24dp.png")));
 
 	
-	public FrameDefile(File [] list, int k, int nombrePhotos){
+	public FrameDefile(File [] list, int k, int nombrePhotos, int noPage){
 		
-		//JButton photo = new JButton((new ImageIcon(list[k].getPath())));
-		
-		  JButton photo = new JButton(new ImageIcon(new ImageIcon(list[k].getPath()).getImage().getScaledInstance(-1, 300, Image.SCALE_FAST)));
-		  photo.setPreferredSize(new Dimension(150 ,150));
-		  photo.setOpaque(false);
-		  photo.setContentAreaFilled(false);
-		  photo.setBorderPainted(false);
+		JButton photo = new JButton(new ImageIcon(new ImageIcon(list[k].getPath()).getImage().getScaledInstance(-1, 300, Image.SCALE_FAST)));
+		photo.setPreferredSize(new Dimension(150 ,150));
+		photo.setOpaque(false);
+		photo.setContentAreaFilled(false);
+		photo.setBorderPainted(false);
 	
 		add(panelPhoto, BorderLayout.CENTER);
 		panelPhoto.setLayout(null);
@@ -50,9 +49,15 @@ public class FrameDefile extends FrameGeneral{
 		
 		panelBoutons.add(delete);
 		delete.setLayout(null);
-		delete.setBounds(135, 40, 70, 40);
+		delete.setBounds(180, 40, 70, 40);
 		delete.setBorder(null);
 		delete.setContentAreaFilled(false);
+		
+		panelBoutons.add(retour);
+		retour.setLayout(null);
+		retour.setBounds(100, 40, 70, 40);
+		retour.setBorder(null);
+		retour.setContentAreaFilled(false);
 		
 		if(k>0){
 			panelBoutons.add(previous);
@@ -71,12 +76,13 @@ public class FrameDefile extends FrameGeneral{
 		}
 
 
-		Ecouteurs ecouteur = new Ecouteurs(list, k, nombrePhotos);
+		Ecouteurs ecouteur = new Ecouteurs(list, k, nombrePhotos, noPage);
 		getBoutonHome().addActionListener(ecouteur);
 		getBoutonOff().addActionListener(ecouteur);
 		next.addActionListener(ecouteur);
 		previous.addActionListener(ecouteur);
 		delete.addActionListener(ecouteur);
+		retour.addActionListener(ecouteur);
 	}
 
 	public class Ecouteurs implements ActionListener{
@@ -84,11 +90,14 @@ public class FrameDefile extends FrameGeneral{
 		File[] list;
 		int k;
 		int nombrePhotos;
-		public Ecouteurs(File [] list, int k, int nombrePhotos){
+		int noPage;
+		
+		public Ecouteurs(File [] list, int k, int nombrePhotos, int noPage){
 			
 			this.list = list;
 			this.k = k;
 			this.nombrePhotos=nombrePhotos;
+			this.noPage=noPage;
 		}
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -107,15 +116,23 @@ public class FrameDefile extends FrameGeneral{
 			dispose();
 			}
 		if(e.getSource()==next){
-			FrameDefile defile = new FrameDefile(list, k+1, nombrePhotos);
+			FrameDefile defile = new FrameDefile(list, k+1, nombrePhotos, noPage);
 			defile.setVisible(true);
 			dispose();
 			}
 		if(e.getSource()==previous){
-			FrameDefile defile = new FrameDefile(list, k-1, nombrePhotos);
+			FrameDefile defile = new FrameDefile(list, k-1, nombrePhotos, noPage);
 			defile.setVisible(true);
 			dispose();
 			}
+		if(e.getSource()==retour){
+			FrameGallerie gallerie = new FrameGallerie(noPage,1);
+			gallerie.setVisible(true);
+			dispose();
+			}
+		if(e.getSource()==delete){
+			System.out.println("pas cliquer sur delete");
+		}
 		}
 	}
 }
