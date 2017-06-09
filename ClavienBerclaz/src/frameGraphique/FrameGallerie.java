@@ -2,6 +2,7 @@ package frameGraphique;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -88,7 +89,7 @@ public class FrameGallerie extends FrameGeneral {
 			  if(k<nombrePhotos){
 			  listePhoto.add(new JButton(new ImageIcon(list[k].getPath())));
 			  listePhoto.get(y).setBounds(5+i*105, 5+j*105, 100, 100);
-			  Ecouteur ecouteur_photo = new Ecouteur(list, k);
+			  Ecouteur ecouteur_photo = new Ecouteur(list, k, noPage);
 			  listePhoto.get(y).addActionListener(ecouteur_photo);
 			  gallerie.add(listePhoto.get(y));
 			  k++;
@@ -141,15 +142,22 @@ public class FrameGallerie extends FrameGeneral {
 	}
 		
 		public class Ecouteur implements ActionListener{
-			public Ecouteur(File [] list, int k){// int k ){//, path ?, File ?) {
+			File[] list;
+			int k;
+			int noPage;
+			
+			public Ecouteur(File [] list, int k, int noPage)
+			{
+				this.list = list;
+				this.k = k;
+				this.noPage=noPage;
 				
 			}
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				FrameDefile defile = new FrameDefile();
-				defile.setVisible(true);
-				System.out.println();
-				dispose();
+			FrameDefile defile = new FrameDefile(list, k, noPage);
+			defile.setVisible(true);
+			dispose();
 			}
 			
 		}
