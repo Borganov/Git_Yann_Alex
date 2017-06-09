@@ -177,13 +177,18 @@ public class FrameGallerie extends FrameGeneral {
 		for(int j = 0; j< 5 ;j++){
 		  for (int i = 0; i < 3; i++) {
 			  if(k<nombrePhotos){
-			  listePhoto.add(new JButton(new ImageIcon(list[k].getPath())));
-			  listePhoto.get(y).setBounds(5+i*105, 5+j*105, 100, 100);
-			  Ecouteur ecouteur_photo = new Ecouteur(list, k, nombrePhotos,noPage);
-			  listePhoto.get(y).addActionListener(ecouteur_photo);
-			  gallerie.add(listePhoto.get(y));
-			  k++;
-			  y++;
+				  JButton pic = new JButton(new ImageIcon(new ImageIcon(list[k].getPath()).getImage().getScaledInstance(-1, 110, Image.SCALE_FAST)));
+				  pic.setPreferredSize(new Dimension(150 ,150));
+				  pic.setOpaque(false);
+				  pic.setContentAreaFilled(false);
+				  pic.setBorderPainted(false);
+				  listePhoto.add(pic);
+				  listePhoto.get(y).setBounds(5+i*105, 5+j*105, 100, 100);
+				  Ecouteur ecouteur_photo = new Ecouteur(list, k, nombrePhotos, noPage);
+				  listePhoto.get(y).addActionListener(ecouteur_photo);
+				  gallerie.add(listePhoto.get(y));
+				  k++;
+				  y++;
 			  }
 		  }
 		}
@@ -196,15 +201,29 @@ public class FrameGallerie extends FrameGeneral {
 			public void actionPerformed(ActionEvent e) {
 				//si clique sur gallerie
 				if (e.getSource()==next){
+					if(source==1){
 					FrameGallerie gallerie = new FrameGallerie(noPage+1,source);
 					gallerie.setVisible(true);
 					dispose();
+					}
+					if(source==2){
+						FrameGallerie gallerie = new FrameGallerie(noPage+1,source,index,contactList);
+						gallerie.setVisible(true);
+						dispose();
+					}
 				}
 				
 				if (e.getSource()==previous){
+					if(source==1){
 					FrameGallerie gallerie = new FrameGallerie(noPage-1,source);
 					gallerie.setVisible(true);
 					dispose();
+					}
+					if(source==2){
+					FrameGallerie gallerie = new FrameGallerie(noPage-1,source,index,contactList);
+					gallerie.setVisible(true);
+					dispose();
+					}
 				}
 				
 				if(e.getSource()==addPhoto){
