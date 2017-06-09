@@ -75,12 +75,15 @@ public class FrameGallerie extends FrameGeneral {
 				  next.setBorder(null);
 				  next.addActionListener(ecouteur);
 				  next.setBounds(300, 590, 70, 40);
-			  } else{
-				  add(previous);
-				  previous.setContentAreaFilled(false);
-				  previous.setBorder(null);
-				  previous.addActionListener(ecouteur);
-				  previous.setBounds(30, 590, 70, 40);
+			  
+			  }
+			  
+			  if(noPage!=1){
+				add(previous);
+				previous.setContentAreaFilled(false);
+				previous.setBorder(null);
+				previous.addActionListener(ecouteur);
+				previous.setBounds(30, 590, 70, 40);
 			  }
 		  }
 		  
@@ -152,7 +155,9 @@ public class FrameGallerie extends FrameGeneral {
 				  next.setBorder(null);
 				  next.addActionListener(ecouteur);
 				  next.setBounds(300, 590, 70, 40);
-			  } else{
+			  } 
+			  
+			  if(noPage!=1){
 				  add(previous);
 				  previous.setContentAreaFilled(false);
 				  previous.setBorder(null);
