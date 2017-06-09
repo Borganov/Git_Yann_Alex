@@ -95,7 +95,7 @@ public class FrameGallerie extends FrameGeneral {
 			  if(k<nombrePhotos){
 			  listePhoto.add(new JButton(new ImageIcon(list[k].getPath())));
 			  listePhoto.get(y).setBounds(5+i*105, 5+j*105, 100, 100);
-			  Ecouteur ecouteur_photo = new Ecouteur(list, k, noPage);
+			  Ecouteur ecouteur_photo = new Ecouteur(list, k, nombrePhotos);
 			  listePhoto.get(y).addActionListener(ecouteur_photo);
 			  gallerie.add(listePhoto.get(y));
 			  k++;
@@ -167,7 +167,7 @@ public class FrameGallerie extends FrameGeneral {
 			  if(k<nombrePhotos){
 			  listePhoto.add(new JButton(new ImageIcon(list[k].getPath())));
 			  listePhoto.get(y).setBounds(5+i*105, 5+j*105, 100, 100);
-			  Ecouteur ecouteur_photo = new Ecouteur(list, k, noPage);
+			  Ecouteur ecouteur_photo = new Ecouteur(list, k, nombrePhotos);
 			  listePhoto.get(y).addActionListener(ecouteur_photo);
 			  gallerie.add(listePhoto.get(y));
 			  k++;
@@ -222,19 +222,18 @@ public class FrameGallerie extends FrameGeneral {
 		public class Ecouteur implements ActionListener{
 			File[] list;
 			int k;
-			int noPage;
+			int nombrePhotos;
 			
-			public Ecouteur(File [] list, int k, int noPage)
+			public Ecouteur(File [] list, int k, int nombrePhotos)
 			{
 				this.list = list;
 				this.k = k;
-				this.noPage=noPage;
-				
+				this.nombrePhotos=nombrePhotos;
 			}
 			
 			public void actionPerformed(ActionEvent e) {
 				if(source==1){
-					FrameDefile defile = new FrameDefile(list, k, noPage);
+					FrameDefile defile = new FrameDefile(list, k, nombrePhotos);
 					defile.setVisible(true);
 					dispose();
 				}
