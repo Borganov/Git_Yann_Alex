@@ -13,6 +13,9 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -30,19 +33,25 @@ public class FrameContactList extends FrameGeneral{
 	JButton newContact = new JButton("Ajouter un contact");
 	
 	//Font de la liste
-	Font fontList = new Font("Verdana",Font.BOLD,19);
+	Font fontList = new Font("Verdana",Font.BOLD,16);
 	
 	
 	FrameContactList() throws ClassNotFoundException, IOException{
 		//Importation des données de BDD_Contact dans l'arrayList
 		DownloadDataContact("./BDD_Contact",contactList);
 		
-		listContact = new JList(contactList.toArray()) ;
-
+		listContact = new JList(contactList.toArray());
 		
-		add(listContact);	//placement du bouton sur l'écran
-		listContact.setBounds(10,10, 380, 400); //axe x, axe y, largeur, hauteur
+		JPanel pan = new JPanel();
+
+		JScrollPane scroll = new JScrollPane();
+		scroll.setBounds(10,10,382,600);
+		scroll.setViewportView(listContact);
+		listContact.setLayoutOrientation(JList.VERTICAL);		
+		add(scroll);
 		listContact.setFont(fontList);
+		listContact.setBorder(new EmptyBorder(10,10,10,10));
+
 		
 		//ajout des listener
 		Ecouteurs ecouteur = new Ecouteurs();
@@ -51,7 +60,7 @@ public class FrameContactList extends FrameGeneral{
 		
 		//Ajout boutton nouveau contact
 		add(newContact);
-		newContact.setBounds(140, 600, 180, 20);
+		newContact.setBounds(140, 620, 180, 20);
 		newContact.addActionListener(ecouteur);
 		
 		
