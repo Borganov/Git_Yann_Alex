@@ -84,7 +84,7 @@ public class Contact implements Serializable {
 	}
 
 
-	public void setEmail(String profilPath) {
+	public void setprofilPath(String profilPath) {
 		this.profilPath = profilPath;
 	}
 

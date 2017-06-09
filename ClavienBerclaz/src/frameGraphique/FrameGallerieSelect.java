@@ -1,3 +1,4 @@
+// SUPPRIMER SUPPRIMER SUPPRIMER
 package frameGraphique;
 
 import java.awt.BorderLayout;
@@ -106,13 +107,13 @@ public class FrameGallerieSelect extends FrameGeneral {
 			public void actionPerformed(ActionEvent e) {
 				//si clique sur gallerie
 				if (e.getSource()==next){
-					FrameGallerie gallerie = new FrameGallerie(noPage+1);
+					FrameGallerie gallerie = new FrameGallerie(noPage+1,1);
 					gallerie.setVisible(true);
 					dispose();
 				}
 				
 				if (e.getSource()==preview){
-					FrameGallerie gallerie = new FrameGallerie(noPage-1);
+					FrameGallerie gallerie = new FrameGallerie(noPage-1,1);
 					gallerie.setVisible(true);
 					dispose();
 				}

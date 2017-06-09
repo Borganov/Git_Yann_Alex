@@ -17,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import contact.Contact;
+import frameGraphique.FrameGallerie.Ecouteurs;
 
 public class FrameContactModify extends FrameGeneral{
 	
@@ -76,8 +77,8 @@ public class FrameContactModify extends FrameGeneral{
 		phoneL.setFont(subtitleFont);
 		
 		//Ajout de la photo de profil et redimensionnement de la photo pour qu'elle s'intègre parfaitement au boutton
-		JButton btnpic = new JButton(new ImageIcon(new ImageIcon("./ImagesGallerie/1.jpg").getImage().getScaledInstance(-1, 110, Image.SCALE_FAST)));
-		btnpic.setPreferredSize(new Dimension(150	, 150));
+		JButton btnpic = new JButton(new ImageIcon(new ImageIcon(list.get(ind).getprofilPath()).getImage().getScaledInstance(-1, 110, Image.SCALE_FAST)));
+		btnpic.setPreferredSize(new Dimension(150 ,150));
 		btnpic.setOpaque(false);
 		btnpic.setContentAreaFilled(false);
 		btnpic.setBorderPainted(false);
@@ -129,6 +130,10 @@ public class FrameContactModify extends FrameGeneral{
 		delete.setBorderPainted(false);
 		delete.addActionListener(ecouteur);
 		
+		//Ajout écouteurs
+		getBoutonHome().addActionListener(ecouteur);
+		getBoutonOff().addActionListener(ecouteur);
+		
 	}
 	
 	public class Ecouteurs implements ActionListener{
@@ -166,7 +171,7 @@ public class FrameContactModify extends FrameGeneral{
 				list.get(ind).setPhoneNumber(phoneF.getText());
 				
 				FrameGallerie selectPicture = null;
-				selectPicture = new FrameGallerie(1);
+				selectPicture = new FrameGallerie(1,2,ind,list);
 				selectPicture.setVisible(true);
 				//fermeture fenêtre actuelle
 				dispose();
@@ -206,6 +211,16 @@ public class FrameContactModify extends FrameGeneral{
 				FramePrincipal menuPrincipal = new FramePrincipal();
 				menuPrincipal.setVisible(true);
 				//fermeture de la fênetre actuelle
+				dispose();
+			}
+			if (e.getSource()==getBoutonOff()){
+				//Sérialisation des contacts présents dans la liste
+				try {
+					UploadDataContact(list);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				dispose();
 			}
 			
