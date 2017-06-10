@@ -1,21 +1,26 @@
 package frameGraphique;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Image;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.SwingConstants;
 
 public class FrameWalker extends FrameGeneral{
 	
-	JLabel soft;
-	String list[] = new String[16];
-	Font start = new Font("Verdanan", Font.BOLD, 24);
+	private JLabel labelCenter = new JLabel(new ImageIcon(getClass().getResource("/wallpaper.jpg")));
+	
+	private JLabel soft;
+	private String list[] = new String[16];
+	private Font start = new Font("Verdanan", Font.BOLD, 24);
 	
 	FrameWalker(int i){
+		//ajout du panel central
+		add(labelCenter, BorderLayout.CENTER);
+		labelCenter.setLayout(null);
+		labelCenter.setBounds(10, 10, 380, 650);
+		
 		list[0]="C";
 		list[1]="Cl";
 		list[2]="Cla";
@@ -34,7 +39,7 @@ public class FrameWalker extends FrameGeneral{
 		list[15]="Cla-Ber Software";
 		
 		soft = new JLabel(list[i]);
-		add(soft);
+		labelCenter.add(soft);
 		soft.setBounds(100, 300, 380, 100);
 		soft.setBackground(null);
 		soft.setFont(start);
