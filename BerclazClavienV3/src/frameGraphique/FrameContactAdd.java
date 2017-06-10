@@ -13,7 +13,9 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.event.ListSelectionEvent;
@@ -137,6 +139,7 @@ public class FrameContactAdd extends FrameGeneral{
 		public void actionPerformed(ActionEvent e) {
 			//si clique sur sauvegarder
 			if (e.getSource()==save){
+				boolean controlResponse;
 				
 				futurContact.setprofilPath("./ImagesGallerie/27.jpg");
 				futurContact.setFirstName(firstnameF.getText());
@@ -144,20 +147,30 @@ public class FrameContactAdd extends FrameGeneral{
 				futurContact.setPhoneNumber(phoneF.getText());
 				futurContact.setCivilite((String)civiliteC.getSelectedItem());
 				
-				list.add(futurContact);
+				controlResponse = futurContact.contactControl(list);
 				
-				FrameContactList interfaceContacts = null;
-				try {
-					interfaceContacts = new FrameContactList(list);
-				} catch (ClassNotFoundException | IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				if(controlResponse == true){
+
+					list.add(futurContact);
+				
+					FrameContactList interfaceContacts = null;
+					try {
+						interfaceContacts = new FrameContactList(list);
+					} catch (ClassNotFoundException | IOException e1) {
+						//TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					interfaceContacts.setVisible(true);
+					//fermeture fenêtre actuelle
+					dispose();
+				
 				}
-				interfaceContacts.setVisible(true);
-				//fermeture fenêtre actuelle
-				dispose();
-				
-				
+				else
+				{
+					//Message d'erreur en cas de problème de contact déjà existant.
+					JOptionPane.showMessageDialog(null, "Deux contacts portent le même nom. \n Veuillez corriger votre enregistrement", "Erreur", JOptionPane.ERROR_MESSAGE);
+				}
+
 				
 			}
 			
