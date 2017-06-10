@@ -12,6 +12,7 @@ import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
@@ -20,12 +21,13 @@ import javax.swing.SwingConstants;
 public class FramePrincipal extends FrameGeneral {
 	
 	//création du panel central
-	private JPanel panelCenter = new JPanel();
+	private JLabel panelCenter = new JLabel(new ImageIcon(getClass().getResource("/wallpaper.jpg")));
 	
 	//création du bouton contact avec image
 	private JButton contacts = new JButton(new ImageIcon(getClass().getResource("/contacts.png")));
 	//création du bouton gallerie avec image
 	private JButton gallerie = new JButton(new ImageIcon(getClass().getResource("/GalleriePhoto.png")));
+
 
 
 	public FramePrincipal(){
@@ -34,7 +36,6 @@ public class FramePrincipal extends FrameGeneral {
 		add(panelCenter, BorderLayout.CENTER);
 		panelCenter.setLayout(null);
 		panelCenter.setBounds(10, 10, 380, 650);
-
 
 		
 		//ajout du bouton contact
@@ -47,6 +48,8 @@ public class FramePrincipal extends FrameGeneral {
 		contacts.setBorder(null);
 		//ajout de l'intitulé du boutton
 		contacts.setText("Contacts");
+		//couleur du texte du bouton
+		contacts.setForeground(Color.WHITE);
 		//placement de l'intitulé sous le bouton
 		contacts.setVerticalTextPosition(SwingConstants.BOTTOM); 
 		contacts.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -62,6 +65,8 @@ public class FramePrincipal extends FrameGeneral {
 		gallerie.setBorder(null);
 		//ajout de l'intitulé du boutton
 		gallerie.setText("Gallerie");
+		//couleur du texte du bouton
+		gallerie.setForeground(Color.WHITE);
 		//placement de l'intitulé sous le bouton
 		gallerie.setVerticalTextPosition(SwingConstants.BOTTOM); 
 		gallerie.setHorizontalTextPosition(SwingConstants.CENTER);

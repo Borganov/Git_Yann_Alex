@@ -231,7 +231,10 @@ public class FrameGallerie extends FrameGeneral {
 					chooser.setCurrentDirectory(new File("/")); 
 					chooser.changeToParentDirectory(); 
 					chooser.showOpenDialog(null);
-					int valeuretour = chooser.showSaveDialog(gallerie);
+					chooser.getSelectedFile();
+					File img = chooser.getSelectedFile();
+					System.out.println(img.getPath());
+					
 				}
 				
 				if (e.getSource()==getBoutonHome()){
