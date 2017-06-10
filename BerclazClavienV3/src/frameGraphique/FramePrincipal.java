@@ -21,7 +21,7 @@ import javax.swing.SwingConstants;
 public class FramePrincipal extends FrameGeneral {
 	
 	//création du panel central
-	private JLabel panelCenter = new JLabel(new ImageIcon(getClass().getResource("/wallpaper.jpg")));
+	private JLabel labelCenter = new JLabel(new ImageIcon(getClass().getResource("/wallpaper.jpg")));
 	
 	//création du bouton contact avec image
 	private JButton contacts = new JButton(new ImageIcon(getClass().getResource("/contacts.png")));
@@ -33,13 +33,13 @@ public class FramePrincipal extends FrameGeneral {
 	public FramePrincipal(){
 		
 		//ajout du panel central
-		add(panelCenter, BorderLayout.CENTER);
-		panelCenter.setLayout(null);
-		panelCenter.setBounds(10, 10, 380, 650);
+		add(labelCenter, BorderLayout.CENTER);
+		labelCenter.setLayout(null);
+		labelCenter.setBounds(10, 10, 380, 650);
 
 		
 		//ajout du bouton contact
-		panelCenter.add(contacts);
+		labelCenter.add(contacts);
 		//placement du bouton sur l'écran
 		contacts.setBounds(50, 30, 100, 120); //axe x, axe y, largeur, hauteur
 		//enlever le fond opaque du bouton
@@ -56,7 +56,7 @@ public class FramePrincipal extends FrameGeneral {
 
 
 		//ajout du bouton gallerie
-		panelCenter.add(gallerie);
+		labelCenter.add(gallerie);
 		//placement du bouton sur l'écran
 		gallerie.setBounds(220, 30, 100, 120); //axe x, axe y, largeur, hauteur
 		//enlever le fond opaque du bouton
