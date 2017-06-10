@@ -233,7 +233,7 @@ public class FrameGallerie extends FrameGeneral {
 					chooser.showOpenDialog(null);
 					chooser.getSelectedFile();
 					File img = chooser.getSelectedFile();
-					System.out.println(img.getPath());
+					System.out.println(img.getName());
 					
 				}
 				
