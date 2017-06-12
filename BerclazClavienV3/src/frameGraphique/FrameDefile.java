@@ -36,7 +36,7 @@ public class FrameDefile extends FrameGeneral{
 	
 		add(panelPhoto, BorderLayout.CENTER);
 		panelPhoto.setLayout(null);
-		panelPhoto.setBounds(25, 20, 350, 550);
+		panelPhoto.setBounds(25, 30, 350, 550);
 
 		add(panelBoutons, BorderLayout.CENTER);
 		panelBoutons.setLayout(null);
