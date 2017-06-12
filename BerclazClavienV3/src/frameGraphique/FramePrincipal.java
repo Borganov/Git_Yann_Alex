@@ -78,6 +78,9 @@ public class FramePrincipal extends FrameGeneral {
 		gallerie.addActionListener(ecouteur);
 		getBoutonHome().addActionListener(ecouteur);
 		getBoutonOff().addActionListener(ecouteur);
+		
+		//Modification couleur heure
+		getLabelHeure().setForeground(Color.white);
 	}
 	
 	public class Ecouteurs implements ActionListener{

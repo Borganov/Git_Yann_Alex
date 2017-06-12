@@ -24,8 +24,11 @@ public abstract class FrameGeneral extends JFrame{
 	
 	private JLabel labelHeure = new JLabel();
 	
+
 	private JButton boutonHome = new JButton("");
 	private JButton boutonOff = new JButton("");
+	
+	private SimpleDateFormat heure;
 	
 	// getters et setters pour les boutons Home et Off
 	public JButton getBoutonHome() {
@@ -42,6 +45,14 @@ public abstract class FrameGeneral extends JFrame{
 
 	public void setBoutonOff(JButton boutonOff) {
 		this.boutonOff = boutonOff;
+	}
+	
+	public JLabel getLabelHeure() {
+		return labelHeure;
+	}
+
+	public void setLabelHeure(JLabel labelHeure) {
+		this.labelHeure = labelHeure;
 	}
 
 
@@ -92,7 +103,7 @@ public abstract class FrameGeneral extends JFrame{
 		//placement du bouton
 		boutonOff.setBounds(320, 3, 50, 5);
 		
-		SimpleDateFormat heure = new SimpleDateFormat("HH:mm");
+		heure = new SimpleDateFormat("HH:mm");
 		add(labelHeure);
 		labelHeure.setText(heure.format(new Date()));
 		labelHeure.setFont(new Font("Consolas", Font.BOLD,15));

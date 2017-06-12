@@ -44,6 +44,8 @@ public class FrameWalker extends FrameGeneral{
 		soft.setBackground(null);
 		soft.setFont(start);
 		soft.setForeground(Color.white);
+		
+		getLabelHeure().setVisible(false);
 	}	
 
 }
