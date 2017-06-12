@@ -82,7 +82,7 @@ public class FrameContactAdd extends FrameGeneral{
 		phoneL.setFont(subtitleFont);
 		
 		//Ajout de la photo de profil et redimensionnement de la photo pour qu'elle s'intègre parfaitement au boutton
-		JButton btnpic = new JButton(new ImageIcon(new ImageIcon("./ImagesGallerie/27.jpg").getImage().getScaledInstance(-1, 110, Image.SCALE_FAST)));
+		JButton btnpic = new JButton(new ImageIcon(new ImageIcon("/profil.jpg").getImage().getScaledInstance(-1, 110, Image.SCALE_FAST)));
 		btnpic.setPreferredSize(new Dimension(150 ,150));
 		btnpic.setOpaque(false);
 		btnpic.setContentAreaFilled(false);
