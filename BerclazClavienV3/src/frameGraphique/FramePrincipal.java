@@ -32,6 +32,7 @@ public class FramePrincipal extends FrameGeneral {
 
 	public FramePrincipal(){
 		
+		
 		//ajout du panel central
 		add(labelCenter, BorderLayout.CENTER);
 		labelCenter.setLayout(null);
