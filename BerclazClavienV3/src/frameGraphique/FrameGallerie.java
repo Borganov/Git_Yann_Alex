@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -16,6 +17,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 
 import contact.Contact;
+import javafx.scene.shape.Path;
 
 public class FrameGallerie extends FrameGeneral {
 	  
@@ -233,8 +235,10 @@ public class FrameGallerie extends FrameGeneral {
 					chooser.showOpenDialog(null);
 					chooser.getSelectedFile();
 					File img = chooser.getSelectedFile();
-					System.out.println(img.getName());
-					
+					System.out.println(img.getAbsolutePath());
+
+					java.nio.file.Path source =  Paths.get(img.getPath());
+					java.nio.file.Path cible = Paths.get("/ImagesGallerie");
 				}
 				
 				if (e.getSource()==getBoutonHome()){

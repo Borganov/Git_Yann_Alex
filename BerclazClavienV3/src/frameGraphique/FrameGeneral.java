@@ -3,12 +3,14 @@ package frameGraphique;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.LayoutManager;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.Font;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-import javax.swing.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 
 //squelette du téléphone
@@ -19,6 +21,8 @@ public abstract class FrameGeneral extends JFrame{
 	private JPanel panelSouth = new JPanel();
 	private JPanel panelEast = new JPanel();
 	private JPanel panelWest = new JPanel();
+	
+	private JLabel labelHeure = new JLabel();
 	
 	private JButton boutonHome = new JButton("");
 	private JButton boutonOff = new JButton("");
@@ -72,6 +76,7 @@ public abstract class FrameGeneral extends JFrame{
 		panelSouth.setBackground(Color.BLACK);
 		
 		
+		
 		//ajout du bouton home
 		panelSouth.add(boutonHome);
 		//dimensionner le bouton home
@@ -86,6 +91,13 @@ public abstract class FrameGeneral extends JFrame{
 		boutonOff.setBackground(Color.BLACK);
 		//placement du bouton
 		boutonOff.setBounds(320, 3, 50, 5);
+		
+		SimpleDateFormat heure = new SimpleDateFormat("HH:mm");
+		add(labelHeure);
+		labelHeure.setText(heure.format(new Date()));
+		labelHeure.setFont(new Font("Consolas", Font.BOLD,15));
+		labelHeure.setBounds(180, 12, 400, 13);
+
 	}
 	
 }
