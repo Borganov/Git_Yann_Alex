@@ -38,8 +38,8 @@ public class FrameContactAdd extends FrameGeneral{
 	String[] civiliteList = {"Monsieur", "Madame"};
 	JComboBox<String> civiliteC = new JComboBox<String>(civiliteList);
 	
-	JButton save = new JButton("Sauvegarder");
-	JButton cancel = new JButton("Annuler");
+	JButton save = new JButton(new ImageIcon(getClass().getResource("/save.png")));
+	JButton cancel = new JButton(new ImageIcon(getClass().getResource("/cancel.png")));
 	JButton photoMod = new JButton(new ImageIcon(getClass().getResource("/modify.png")));
 	
 	private ArrayList<Contact> list;
@@ -82,7 +82,7 @@ public class FrameContactAdd extends FrameGeneral{
 		phoneL.setFont(subtitleFont);
 		
 		//Ajout de la photo de profil et redimensionnement de la photo pour qu'elle s'intègre parfaitement au boutton
-		JButton btnpic = new JButton(new ImageIcon(new ImageIcon("/profil.jpg").getImage().getScaledInstance(-1, 110, Image.SCALE_FAST)));
+		JButton btnpic = new JButton(new ImageIcon(new ImageIcon("./Icones/profil.jpg").getImage().getScaledInstance(-1, 110, Image.SCALE_FAST)));
 		btnpic.setPreferredSize(new Dimension(150 ,150));
 		btnpic.setOpaque(false);
 		btnpic.setContentAreaFilled(false);
@@ -119,13 +119,17 @@ public class FrameContactAdd extends FrameGeneral{
 		
 		//Ajout boutton sauvegarder
 		add(save);
-		save.setBounds(50, 600, 120, 20);
+		save.setBounds(100, 580, 80, 80);
 		save.addActionListener(ecouteur);
+		save.setContentAreaFilled(false);
+		save.setBorderPainted(false);
 		
 		//Ajout boutton annuler
 		add(cancel);
-		cancel.setBounds(200, 600, 120, 20);
+		cancel.setBounds(220, 580, 80, 80);
 		cancel.addActionListener(ecouteur);
+		cancel.setContentAreaFilled(false);
+		cancel.setBorderPainted(false);
 		
 		//Ajout écouteurs
 		getBoutonHome().addActionListener(ecouteur);
@@ -141,7 +145,7 @@ public class FrameContactAdd extends FrameGeneral{
 			if (e.getSource()==save){
 				boolean controlResponse;
 				
-				futurContact.setprofilPath("./ImagesGallerie/27.jpg");
+				futurContact.setprofilPath("/profil.jpg");
 				futurContact.setFirstName(firstnameF.getText());
 				futurContact.setLastName(lastnameF.getText());
 				futurContact.setPhoneNumber(phoneF.getText());
@@ -194,7 +198,7 @@ public class FrameContactAdd extends FrameGeneral{
 			if (e.getSource()==photoMod){
 				
 				//System.out.println(list.lastIndexOf(list)+1);
-				futurContact.setprofilPath("./ImagesGallerie/27.jpg");
+				futurContact.setprofilPath("./Icones/profil.jpg");
 				futurContact.setFirstName(firstnameF.getText());
 				futurContact.setLastName(lastnameF.getText());
 				futurContact.setPhoneNumber(phoneF.getText());

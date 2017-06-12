@@ -33,8 +33,7 @@ public class FrameContactModify extends FrameGeneral{
 	JTextField phoneF = new JTextField();
 	
 	String[] civiliteList = {"Monsieur", "Madame"};
-	JComboBox<String> civiliteC = new JComboBox<String>(civiliteList);
-	
+	JComboBox<String> civiliteC = new JComboBox<String>(civiliteList);	
 	
 	JButton save = new JButton(new ImageIcon(getClass().getResource("/save.png")));
 	JButton delete = new JButton(new ImageIcon(getClass().getResource("/delete.png")));

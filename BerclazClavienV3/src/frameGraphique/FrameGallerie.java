@@ -8,7 +8,9 @@ import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -242,6 +244,14 @@ public class FrameGallerie extends FrameGeneral {
 				}
 				
 				if (e.getSource()==getBoutonHome()){
+					if(source==2){
+						try {
+							UploadDataContact(contactList);
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					}
 					//instantiation nouvelle fenêtre
 					FramePrincipal menuPrincipal = new FramePrincipal();
 					menuPrincipal.setVisible(true);
@@ -250,6 +260,14 @@ public class FrameGallerie extends FrameGeneral {
 				}
 				
 				if (e.getSource()==getBoutonOff()){
+					if(source==2){
+						try {
+							UploadDataContact(contactList);
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+					}
 					//éteindre le téléphone
 					dispose();
 				}
@@ -292,5 +310,17 @@ public class FrameGallerie extends FrameGeneral {
 				}
 			}
 			
+		}
+		
+		//Méthode de sérialisation des contacts
+		private static void UploadDataContact(ArrayList<Contact> listcontact) throws IOException {
+			
+			for (int i = 0; i < listcontact.size(); i++) {
+				 FileOutputStream out = new FileOutputStream("./BDD_Contact/" + listcontact.get(i).getLastName()+listcontact.get(i).getFirstName()+".ser");
+				 ObjectOutputStream oos = new ObjectOutputStream( out );
+				 oos.writeObject(listcontact.get(i));
+				 oos.close(); 
+			}
+									
 		}
 }

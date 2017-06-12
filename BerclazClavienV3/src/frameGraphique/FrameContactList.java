@@ -67,6 +67,7 @@ public class FrameContactList extends FrameGeneral{
 		Ecouteurs ecouteur = new Ecouteurs();
 		listContact.addListSelectionListener(ecouteur);
 		getBoutonHome().addActionListener(ecouteur);
+		getBoutonOff().addActionListener(ecouteur);
 		
 		//Ajout boutton nouveau contact
 		add(newContact);
@@ -105,6 +106,7 @@ public class FrameContactList extends FrameGeneral{
 		Ecouteurs ecouteur = new Ecouteurs();
 		listContact.addListSelectionListener(ecouteur);
 		getBoutonHome().addActionListener(ecouteur);
+		getBoutonOff().addActionListener(ecouteur);
 			
 		//Ajout boutton nouveau contact
 		add(newContact);
@@ -171,6 +173,19 @@ public class FrameContactList extends FrameGeneral{
 				menuPrincipal.setVisible(true);
 				//fermeture de la fênetre actuelle
 				dispose();
+			}
+			
+			if (e.getSource()==getBoutonOff()){
+				//Sérialisation des contacts présents dans la liste
+				try {
+					UploadDataContact(contactList);
+					dispose();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				//fermeture de la fênetre actuelle
+				
 			}
 			
 			if (e.getSource()== newContact){
