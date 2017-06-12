@@ -143,7 +143,8 @@ public class FrameContactAdd extends FrameGeneral{
 		public void actionPerformed(ActionEvent e) {
 			//si clique sur sauvegarder
 			if (e.getSource()==save){
-				boolean controlResponse;
+				boolean controlIsEquals;
+				boolean controlIsEmpty;
 				
 				futurContact.setprofilPath("/profil.jpg");
 				futurContact.setFirstName(firstnameF.getText());
@@ -151,9 +152,10 @@ public class FrameContactAdd extends FrameGeneral{
 				futurContact.setPhoneNumber(phoneF.getText());
 				futurContact.setCivilite((String)civiliteC.getSelectedItem());
 				
-				controlResponse = futurContact.contactControl(list);
+				controlIsEquals = futurContact.contactControl(list);
+				controlIsEmpty = futurContact.contactIsEmpty();
 				
-				if(controlResponse == true){
+				if(controlIsEquals == true && controlIsEmpty == true){
 
 					list.add(futurContact);
 				

@@ -112,4 +112,15 @@ public class Contact implements Serializable {
 		return response;
 	}
 	
+	//Méthode pour contrôler qu'un contact n'est pas vide (Lastname and firstname)
+	public boolean contactIsEmpty(){
+		boolean response = true;
+		if(lastName.isEmpty()==true || firstName.isEmpty()==true){
+			response = false;
+		}
+		
+		
+		return response;
+	}
+	
 }
