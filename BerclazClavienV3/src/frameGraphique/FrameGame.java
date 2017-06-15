@@ -9,27 +9,30 @@ import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
+import javax.swing.plaf.synth.SynthSeparatorUI;
 
 import contact.Question;
+import frameGraphique.FrameGallerie.Ecouteurs;
 
 public class FrameGame extends FrameGeneral {
 
-	Question [] questions = new Question[10];
+	private Question [] questions = new Question[10];
 	
-	JLabel titre = new JLabel("Quizz");
+	private JLabel titre = new JLabel("Quizz");
 	
-	JTextArea question;
+	private JTextArea question;
 	
-	JLabel responseTrue = new JLabel("Bravo, prochaine question!");
-	JLabel responseFalse = new JLabel("Oulalalalala, suite!");
+	private JLabel responseTrue = new JLabel("Bravo, prochaine question!");
+	private JLabel responseFalse = new JLabel("Oulalalalala, suite!");
 	
-	JCheckBox choice1;
-	JCheckBox choice2; 
-	JCheckBox choice3;
+
+	private JCheckBox choice1;
+	private JCheckBox choice2; 
+	private JCheckBox choice3;
 	
+	int alea;
+
 	JButton validate = new JButton("Valider");
-	
-	
 	
 	public FrameGame(){
 		Font titleFont = new Font("Verdanan", Font.BOLD, 24);
@@ -48,7 +51,7 @@ public class FrameGame extends FrameGeneral {
 		questions[8] = new Question("Quel est le code postal du village de Venthône", "3973", "3960", "1950", 1);
 		questions[9] = new Question("Quel est le code postal du village de Venthône", "3973", "3960", "1950", 1);
 		
-		int alea = (int)(Math.random()*(0+10));
+		alea = (int)(Math.random()*(0+10));
 		
 		question = new JTextArea(questions[alea].getQuestion());
 		choice1 = new JCheckBox("    " + questions[alea].getResponse1());
@@ -65,8 +68,8 @@ public class FrameGame extends FrameGeneral {
 		question.setBounds(50,100,300,40);
 		question.setLineWrap(true);
 		
+		
 		//ajout des checks box servant à la selection de la réponse
-		Ecouteur ecouteur = new Ecouteur();
 		add(choice1);
 		choice1.setBounds(60, 180, 250, 20);
 		add(choice2);
@@ -74,18 +77,51 @@ public class FrameGame extends FrameGeneral {
 		add(choice3);
 		choice3.setBounds(60, 300, 250, 20);
 		
+		Ecouteur ecouteur = new Ecouteur();
+		getBoutonHome().addActionListener(ecouteur);
+		getBoutonOff().addActionListener(ecouteur);
+		choice1.addActionListener(ecouteur);
+		choice2.addActionListener(ecouteur);
+		choice3.addActionListener(ecouteur);
+		validate.addActionListener(ecouteur);
 		
 	}
 	
 	public class Ecouteur implements ActionListener{
-
+		
+		private int select;
+		boolean reponseControl;
+		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-		
 			
+			if (e.getSource()==choice1){
+				select=1;
+				}
+			if (e.getSource()==choice2){
+				select=2;
+				}
+			if (e.getSource()==choice3){
+				select=3;
+			}
+			
+			reponseControl = questions[alea].reponseControl(select);
+			
+			if(reponseControl==true){
+				add(responseTrue);
+				responseTrue.setBounds(60, 360, 250, 20);
+				FrameGame game = new FrameGame();
+				game.setVisible(true);
+				dispose();
+				}
+				else{
+					add(responseFalse);
+					responseFalse.setBounds(60, 360, 250, 20);
+					FrameGame game = new FrameGame();
+					game.setVisible(true);
+					dispose();
+				}
 		}
-		
 	}
-	
-	
 }
+

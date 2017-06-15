@@ -57,7 +57,13 @@ public class Question {
 		this.response = response;
 	}
 	
-	
-	
+	public boolean reponseControl(int select){
+		
+		boolean reponse =true;
+		if(select!=getResponse()){
+		reponse=false;
+		}
+		return reponse;
+	}
 	
 }
