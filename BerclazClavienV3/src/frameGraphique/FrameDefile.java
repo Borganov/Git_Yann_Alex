@@ -1,7 +1,6 @@
 package frameGraphique;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -11,9 +10,6 @@ import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-
-import frameGraphique.FrameGallerie.Ecouteur;
-import frameGraphique.FrameGallerie.Ecouteurs;
 
 public class FrameDefile extends FrameGeneral{
 	

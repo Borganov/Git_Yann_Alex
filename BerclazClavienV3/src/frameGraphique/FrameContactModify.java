@@ -18,7 +18,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import contact.Contact;
-import frameGraphique.FrameGallerie.Ecouteurs;
 
 public class FrameContactModify extends FrameGeneral{
 	

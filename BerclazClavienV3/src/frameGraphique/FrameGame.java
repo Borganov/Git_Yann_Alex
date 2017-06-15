@@ -9,11 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
-import javax.swing.SwingConstants;
-import javax.swing.plaf.synth.SynthSeparatorUI;
-
 import contact.Question;
-import frameGraphique.FrameGallerie.Ecouteurs;
 
 public class FrameGame extends FrameGeneral {
 
