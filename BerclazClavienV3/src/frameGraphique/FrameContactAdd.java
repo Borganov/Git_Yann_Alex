@@ -214,8 +214,7 @@ public class FrameContactAdd extends FrameGeneral{
 						futurContact.setCivilite((String)civiliteC.getSelectedItem());
 						
 						list.add(futurContact);
-						System.out.println(list.size());
-						int ind  =list.lastIndexOf(list)+1;
+						int ind  =list.size()-1;
 										
 						FrameGallerie selectPicture = null;
 						selectPicture = new FrameGallerie(1,2,ind,list);
