@@ -49,7 +49,7 @@ public class FrameContactList extends FrameGeneral{
 		
 		//Ajout de la liste de contact avec le scroll
 		JScrollPane scroll = new JScrollPane();
-		scroll.setBounds(10,70,382,600);
+		scroll.setBounds(10,70,382,590);
 		scroll.setViewportView(listContact);
 		listContact.setLayoutOrientation(JList.VERTICAL);		
 		add(scroll);
@@ -88,7 +88,7 @@ public class FrameContactList extends FrameGeneral{
 		
 		//Ajout de la liste de contact avec le scroll
 		JScrollPane scroll = new JScrollPane();
-		scroll.setBounds(10,70,382,600);
+		scroll.setBounds(10,70,382,590);
 		scroll.setViewportView(listContact);
 		listContact.setLayoutOrientation(JList.VERTICAL);		
 		add(scroll);
