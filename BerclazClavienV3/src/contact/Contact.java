@@ -112,6 +112,20 @@ public class Contact implements Serializable {
 		return response;
 	}
 	
+	public boolean contactControl(ArrayList<Contact> list, int ind){
+		boolean response = true;
+		for (int i = 0; i < list.size(); i++) {
+			String control1 = this.firstName+this.lastName;
+			String control2 = list.get(i).firstName+list.get(i).lastName;
+			if(control1.equals(control2) && ind!=i){
+				response = false;
+			}
+			 
+		}
+		
+		return response;
+	}
+	
 	//Méthode pour contrôler qu'un contact n'est pas vide (Lastname and firstname)
 	public boolean contactIsEmpty(){
 		boolean response = true;
