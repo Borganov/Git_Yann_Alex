@@ -28,6 +28,7 @@ public class FramePrincipal extends FrameGeneral {
 	//création du bouton gallerie avec image
 	private JButton gallerie = new JButton(new ImageIcon(getClass().getResource("/GalleriePhoto.png")));
 
+	private JButton game = new JButton(new ImageIcon(getClass().getResource("/game.png")));
 
 
 	public FramePrincipal(){
@@ -72,10 +73,27 @@ public class FramePrincipal extends FrameGeneral {
 		gallerie.setVerticalTextPosition(SwingConstants.BOTTOM); 
 		gallerie.setHorizontalTextPosition(SwingConstants.CENTER);
 		
+		//ajout du bouton gallerie
+		labelCenter.add(game);
+		//placement du bouton sur l'écran
+		game.setBounds(50, 170, 100, 120); //axe x, axe y, largeur, hauteur
+		//enlever le fond opaque du bouton
+		game.setContentAreaFilled(false);
+		//enlever les bordures du boutton
+		game.setBorder(null);
+		//ajout de l'intitulé du boutton
+		game.setText("Jeux");
+		//couleur du texte du bouton
+		game.setForeground(Color.WHITE);
+		//placement de l'intitulé sous le bouton
+		game.setVerticalTextPosition(SwingConstants.BOTTOM); 
+		game.setHorizontalTextPosition(SwingConstants.CENTER);
+		
 		//ajout des listener
 		Ecouteurs ecouteur = new Ecouteurs();
 		contacts.addActionListener(ecouteur);
 		gallerie.addActionListener(ecouteur);
+		game.addActionListener(ecouteur);
 		getBoutonHome().addActionListener(ecouteur);
 		getBoutonOff().addActionListener(ecouteur);
 		
@@ -121,6 +139,13 @@ public class FramePrincipal extends FrameGeneral {
 			if (e.getSource()==getBoutonOff()){
 				//éteindre le téléphone
 				dispose();
+			}
+			
+			if(e.getSource()==game){
+				FrameGame game = new FrameGame(0);
+				game.setVisible(true);
+				dispose();
+				
 			}
 		
 		}

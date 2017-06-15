@@ -51,7 +51,7 @@ public class FrameGame extends FrameGeneral {
 		questions[5] = new Question("Quel est la combinaison chimique du sel", "NaCl", "H2O", "O2", 1);
 		questions[6] = new Question("Combien de pull peut-on tricoter avec un mouton", "8", "21", "37", 2);
 		questions[7] = new Question("Convertir 1 Byte en Bit", "8", "16", "Pas convertible", 1);
-		questions[8] = new Question("Où se trouve le petit village de Tuktoyaktuk", "En Inde", "En Afrique", "Au Canada", 2);
+		questions[8] = new Question("Où se trouve le petit village de Tuktoyaktuk", "En Inde", "En Afrique", "Au Canada", 3);
 		questions[9] = new Question("30+1*4", "34", "124", "1024", 1);
 		
 		alea = (int)(Math.random()*(0+10));
