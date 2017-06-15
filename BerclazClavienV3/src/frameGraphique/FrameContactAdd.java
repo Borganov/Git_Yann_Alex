@@ -40,6 +40,10 @@ public class FrameContactAdd extends FrameGeneral{
 	private ArrayList<Contact> list;
 	private Contact futurContact = new Contact();
 	
+	/**
+	 * Constructeur principal permettant créer l'interface de gestion des nouveaux contacts
+	 * @param l
+	 */
 	FrameContactAdd( ArrayList<Contact> l){
 		list = l;
 		Font titleFont = new Font("Verdanan", Font.BOLD, 24);
@@ -129,11 +133,21 @@ public class FrameContactAdd extends FrameGeneral{
 		
 	}
 	
+	
 	public class Ecouteurs implements ActionListener{
-
+		/**
+		 * Ecouteur permettant de gérer les différents bouttons présents sur la fenêtre Contact Add
+		 * 
+		 * Save = ecouteur du boutton sauvegarder
+		 * Cancel = ecouteur du boutton annuler
+		 * PhotoMod = ecouteur du boutton modification de photo d'un contact
+		 * BouttonOFF = ecouteur gérant le boutton off du smartphone
+		 * BouttonHome = ecouteur gérant le boutton Home en bas du smartphone
+		 */
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			//si clique sur sauvegarder
+			
 			if (e.getSource()==save){
 				boolean controlIsEquals;
 				boolean controlIsEmpty;
@@ -144,6 +158,7 @@ public class FrameContactAdd extends FrameGeneral{
 				futurContact.setPhoneNumber(phoneF.getText());
 				futurContact.setCivilite((String)civiliteC.getSelectedItem());
 				
+				//Contrôle de sécurité
 				controlIsEquals = futurContact.contactControl(list);
 				controlIsEmpty = futurContact.contactIsEmpty();
 				
@@ -258,7 +273,12 @@ public class FrameContactAdd extends FrameGeneral{
 		
 	}
 	
-	//Méthode de sérialisation des contacts
+	
+	/**
+	 * Méthode de sérialisation des contacts permettant de sérialiser les enregistrements de contact dans le smartphone
+	 * @param listcontact
+	 * @throws IOException
+	 */
 		private static void UploadDataContact(ArrayList<Contact> listcontact) throws IOException {
 			
 			for (int i = 0; i < listcontact.size(); i++) {

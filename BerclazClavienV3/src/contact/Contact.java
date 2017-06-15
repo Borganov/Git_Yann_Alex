@@ -18,6 +18,13 @@ public class Contact implements Serializable {
 
 
 	//Constructeur
+	/**
+	 * C'est le constructeur principal de l'objet Contact
+	 * @param lastName
+	 * @param firstName
+	 * @param phoneNumber
+	 * @throws IOException
+	 */
 	public Contact(String lastName, String firstName, String phoneNumber) throws IOException {
 		this.lastName = lastName;
 		this.firstName = firstName;
@@ -95,7 +102,12 @@ public class Contact implements Serializable {
 		return toList;
 	}
 	
-	//Méthode de contrôle. Savoir si le contact en question est présent dans l'arrayList envoyé.
+	
+	/**
+	 * Méthode de contrôle. Savoir si le contact en question est présent dans l'arrayList envoyé.
+	 * @param list
+	 * @return
+	 */
 	public boolean contactControl(ArrayList<Contact> list){
 		boolean response = true;
 		for (int i = 0; i < list.size(); i++) {
@@ -111,8 +123,14 @@ public class Contact implements Serializable {
 	}
 	
 
-	/*Méthode de contrôle. Savoir si le contact en question est présent 
-	dans l'arrayList envoyé dans le cas d'une modification de contact donc l'Id ne doit pas être identique*/
+	
+	/**
+	 * Méthode de contrôle. Savoir si le contact en question est présent 
+	 * dans l'arrayList envoyé dans le cas d'une modification de contact donc l'Id ne doit pas être identique
+	 * @param list
+	 * @param ind
+	 * @return
+	 */
 		public boolean contactControl(ArrayList<Contact> list, int ind){
 			boolean response = true;
 			for (int i = 0; i < list.size(); i++) {
@@ -129,7 +147,11 @@ public class Contact implements Serializable {
 
 
 	
-	//Méthode pour contrôler qu'un contact n'est pas vide (Lastname and firstname)
+	
+		/**
+		 * Méthode pour contrôler qu'un contact n'est pas vide (Lastname and firstname)
+		 * @return
+		 */
 	public boolean contactIsEmpty(){
 		boolean response = true;
 		if(lastName.isEmpty()==true || firstName.isEmpty()==true){

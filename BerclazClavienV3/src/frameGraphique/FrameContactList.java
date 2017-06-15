@@ -40,7 +40,12 @@ public class FrameContactList extends FrameGeneral{
 	//Ajout du titre de Contact liste
 	private JLabel titre = new JLabel("Liste de contacts");
 	
-	
+	/**
+	 * Constructeur permettant de générer la fenêtre de listing des contacts en venant depuis l'interface d'accueil.
+	 * Il permet de désérialiser les contacts et de les mettre dans l'arrayList
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	FrameContactList() throws ClassNotFoundException, IOException{
 		//Importation des données de BDD_Contact dans l'arrayList
 		DownloadDataContact("./BDD_Contact",contactList);
@@ -78,7 +83,13 @@ public class FrameContactList extends FrameGeneral{
 		
 		
 	}
-	
+	/**
+	 * Ce constructeur est utilisé pour la navigation entre Contact Modify, Contact Add et Contact List. Il permet de faire suivre l'arraylist des contacts afin
+	 * de ne rien perdre
+	 * @param l
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
 	FrameContactList(ArrayList<Contact> l) throws ClassNotFoundException, IOException{
 		//Importation des données de BDD_Contact dans l'arrayList
 		contactList = l;
@@ -116,8 +127,13 @@ public class FrameContactList extends FrameGeneral{
 		newContact.addActionListener(ecouteur);
 			
 	}
-	
-	//Méthode de désérialisation des fichiers présent dans le fichier BDD_Contact
+	/**
+	 * Méthode de désérialisation des fichiers présent dans le fichier BDD_Contact
+	 * @param path
+	 * @param listcontact
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	private static void DownloadDataContact(String path, ArrayList<Contact> listcontact) throws IOException, ClassNotFoundException {
 		File folder = new File(path);
 		if(folder.isDirectory()==true){
@@ -140,7 +156,14 @@ public class FrameContactList extends FrameGeneral{
 	}
 	
 	public class Ecouteurs implements ListSelectionListener, ActionListener{
-
+		/**
+		 * Ecouteur permetant de gérer les différentes interactions utilisateurs présent sur la liste
+		 * 
+		 * Premier écouteur permet de lancer la fenêtre de modification de contact lorsque l'on clique sur un élément de la liste
+		 * Bouttonhome renvoi directement à l'interface d'accueil tout en sérialisant les contacts présents dans l'arraylist
+		 * BouttonOff il éteint le smartphone tout en sérialisant les contacts présents dans l'arraylist
+		 * Add = Ouvre la fenêtre permettant d'ajouter un contact
+		 */
 		@Override
 		public void valueChanged(ListSelectionEvent e) {
 			int contactSelected = (e.getFirstIndex());
@@ -199,7 +222,12 @@ public class FrameContactList extends FrameGeneral{
 		}
 		
 	}
-	//Méthode de sérialisation des contacts
+
+	/**
+	 * Méthode de sérialisation des contacts
+	 * @param listcontact
+	 * @throws IOException
+	 */
 	private static void UploadDataContact(ArrayList<Contact> listcontact) throws IOException {
 		
 		for (int i = 0; i < listcontact.size(); i++) {

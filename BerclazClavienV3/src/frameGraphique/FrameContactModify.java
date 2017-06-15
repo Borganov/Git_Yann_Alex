@@ -42,6 +42,12 @@ public class FrameContactModify extends FrameGeneral{
 	private ArrayList<Contact> list;
 	private int ind;
 	
+	/**
+	 * Constructeur de la frame de modification de modify de contact
+	 * @param i
+	 * @param l
+	 * @throws IOException
+	 */
 	FrameContactModify(int i, ArrayList<Contact> l) throws IOException{
 		list = l;
 		ind = i;
@@ -137,6 +143,11 @@ public class FrameContactModify extends FrameGeneral{
 	
 	public class Ecouteurs implements ActionListener{
 
+		/**
+		 * Ecouteur save = sauvegarde un contact modifié tout en contrôlant si tout est en ordre (non vide et non déjà présent)
+		 * Ecouteur photoMod = permet de modifier la photo tout en faisant les meme control que save
+		 * Ecouteur delete = supprime le contact sélectionner de l'arraylist
+		 */
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			//si clique sur gallerie
