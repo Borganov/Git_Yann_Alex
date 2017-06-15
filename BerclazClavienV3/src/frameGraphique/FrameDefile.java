@@ -136,11 +136,10 @@ public class FrameDefile extends FrameGeneral{
 			dispose();
 			}
 		if(e.getSource()==delete){
+			list[k].delete();
 			FrameGallerie gallerie = new FrameGallerie(1,1);
 			gallerie.setVisible(true);
 			dispose();
-			list[k].delete();
-
 			}
 		}
 	}
