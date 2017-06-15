@@ -21,6 +21,7 @@ public class FrameGame extends FrameGeneral {
 	private JLabel titre = new JLabel("Quizz");
 	
 	private JTextArea question;
+	private JTextArea score;
 	
 	private JLabel responseTrue = new JLabel("Bravo, prochaine question!");
 	private JLabel responseFalse = new JLabel("Oulalalalala, suite!");
@@ -31,25 +32,27 @@ public class FrameGame extends FrameGeneral {
 	private JCheckBox choice3;
 	
 	int alea;
+	int cptScore;
 
-	JButton validate = new JButton("Valider");
+	JButton next = new JButton("Passer à la prochaine question");
 	
-	public FrameGame(){
+	public FrameGame(int s){
+		cptScore = s;
 		Font titleFont = new Font("Verdanan", Font.BOLD, 24);
 		Font subtitleFont= new Font("Verdana",Font.BOLD,13);
 		Font contentFont = new Font("Verdana",Font.BOLD,12);
 		
 		//Instanciation des questions
 		questions[0] = new Question("Quel est le code postal du village de Venthône qui est un petit village se situant sur les hauts de Sierre?", "3973", "3960", "1950", 1);
-		questions[1] = new Question("Combien font 2 + 2 ?", "6", "0", "2", 3);
+		questions[1] = new Question("Combien font 2 + 2 ?", "6", "0", "4", 3);
 		questions[2] = new Question("Quel est le nom de l'acteur jouant Harry Potter ?", "Sean Connery", "Tommy Lee Jones", "Daniel Radcliffe", 3);
 		questions[3] = new Question("Quel est la capital de la Suisse", "Bern", "Sion", "Paris", 1);
 		questions[4] = new Question("Combien font 8 / 4 + 4", "8", "6", "5", 2);
 		questions[5] = new Question("Quel est la combinaison chimique du sel", "NaCl", "H2O", "O2", 1);
-		questions[6] = new Question("Quel est le code postal du village de Venthône", "3973", "3960", "1950", 1);
-		questions[7] = new Question("Quel est le code postal du village de Venthône", "3973", "3960", "1950", 1);
-		questions[8] = new Question("Quel est le code postal du village de Venthône", "3973", "3960", "1950", 1);
-		questions[9] = new Question("Quel est le code postal du village de Venthône", "3973", "3960", "1950", 1);
+		questions[6] = new Question("Combien de pull peut-on tricoter avec un bouton", "8", "21", "37", 2);
+		questions[7] = new Question("Convertir 1 Byte en Bit", "8", "16", "Pas convertible", 1);
+		questions[8] = new Question("Où se trouve le petit village de Tuktoyaktuk", "En Inde", "En Afrique", "Au Canada", 2);
+		questions[9] = new Question("30+1*4", "34", "124", "1024", 1);
 		
 		alea = (int)(Math.random()*(0+10));
 		
@@ -68,6 +71,11 @@ public class FrameGame extends FrameGeneral {
 		question.setBounds(50,100,300,40);
 		question.setLineWrap(true);
 		
+		score = new JTextArea("Votre score est de " + cptScore);
+		add(score);
+		score.setBounds(80,450,250,20);
+
+		
 		
 		//ajout des checks box servant à la selection de la réponse
 		add(choice1);
@@ -83,7 +91,7 @@ public class FrameGame extends FrameGeneral {
 		choice1.addActionListener(ecouteur);
 		choice2.addActionListener(ecouteur);
 		choice3.addActionListener(ecouteur);
-		validate.addActionListener(ecouteur);
+		next.addActionListener(ecouteur);
 		
 	}
 	
@@ -110,16 +118,33 @@ public class FrameGame extends FrameGeneral {
 			if(reponseControl==true){
 				add(responseTrue);
 				responseTrue.setBounds(60, 360, 250, 20);
-				FrameGame game = new FrameGame();
-				game.setVisible(true);
-				dispose();
+				cptScore = cptScore+3;
 				}
 				else{
 					add(responseFalse);
 					responseFalse.setBounds(60, 360, 250, 20);
-					FrameGame game = new FrameGame();
-					game.setVisible(true);
-					dispose();
+					cptScore = cptScore-1;
+				}
+			add(next);
+			next.setBounds(60, 400, 250, 20);
+			
+			if(e.getSource()==next){
+				FrameGame game = new FrameGame(cptScore);
+				game.setVisible(true);
+				dispose();
+			}
+			
+			if (e.getSource()==getBoutonHome()){
+				//instantiation nouvelle fenêtre
+				FramePrincipal menuPrincipal = new FramePrincipal();
+				menuPrincipal.setVisible(true);
+				//fermeture de la fênetre actuelle
+				dispose();
+				}
+			
+			if (e.getSource()==getBoutonOff()){
+				//éteindre le téléphone
+				dispose();
 				}
 		}
 	}

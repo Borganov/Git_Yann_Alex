@@ -39,7 +39,7 @@ public class MainStart {
 //		
 //		telephone.setVisible(true);
 		
-		FrameGame game = new FrameGame();
+		FrameGame game = new FrameGame(0);
 		game.setVisible(true);
 
 
