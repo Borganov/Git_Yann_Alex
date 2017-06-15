@@ -112,6 +112,7 @@ public class Contact implements Serializable {
 		return response;
 	}
 	
+
 	/*Méthode de contrôle. Savoir si le contact en question est présent 
 	dans l'arrayList envoyé dans le cas d'une modification de contact donc l'Id ne doit pas être identique*/
 		public boolean contactControl(ArrayList<Contact> list, int ind){
@@ -127,6 +128,8 @@ public class Contact implements Serializable {
 			
 			return response;
 		}
+
+
 	
 	//Méthode pour contrôler qu'un contact n'est pas vide (Lastname and firstname)
 	public boolean contactIsEmpty(){

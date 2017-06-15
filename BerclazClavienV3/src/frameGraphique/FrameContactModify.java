@@ -148,6 +148,7 @@ public class FrameContactModify extends FrameGeneral{
 					boolean controlIsEquals;
 					boolean controlIsEmpty;
 					controlIsEquals = contactToControl.contactControl(list,ind);
+
 					controlIsEmpty = contactToControl.contactIsEmpty();
 					if(controlIsEquals == true && controlIsEmpty == true){
 						list.get(ind).setCivilite((String)civiliteC.getSelectedItem());;
