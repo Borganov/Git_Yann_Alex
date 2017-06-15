@@ -14,6 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import contact.Contact;
@@ -142,41 +143,73 @@ public class FrameContactModify extends FrameGeneral{
 			//si clique sur gallerie
 			if (e.getSource()==save){
 				
-				list.get(ind).setCivilite((String)civiliteC.getSelectedItem());;
-				list.get(ind).setFirstName(firstnameF.getText());
-				list.get(ind).setLastName(lastnameF.getText());
-				list.get(ind).setPhoneNumber(phoneF.getText());
-				
-				FrameContactList interfaceContacts = null;
 				try {
-					interfaceContacts = new FrameContactList(list);
-				} catch (ClassNotFoundException | IOException e1) {
+					Contact contactToControl = new Contact(lastnameF.getText(),firstnameF.getText(),phoneF.getText());
+					boolean controlIsEquals;
+					boolean controlIsEmpty;
+					controlIsEquals = contactToControl.contactControl(list);
+					controlIsEmpty = contactToControl.contactIsEmpty();
+					if(controlIsEquals == true && controlIsEmpty == true){
+						list.get(ind).setCivilite((String)civiliteC.getSelectedItem());;
+						list.get(ind).setFirstName(firstnameF.getText());
+						list.get(ind).setLastName(lastnameF.getText());
+						list.get(ind).setPhoneNumber(phoneF.getText());
+						
+						
+						FrameContactList interfaceContacts = null;
+						try {
+							interfaceContacts = new FrameContactList(list);
+						} catch (ClassNotFoundException | IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						interfaceContacts.setVisible(true);
+						//fermeture fenêtre actuelle
+						dispose();
+							
+					}else
+					{
+						//Message d'erreur en cas de problème de contact déjà existant.
+						JOptionPane.showMessageDialog(null, "Contact vide ou identique. \n Veuillez corriger votre enregistrement", "Erreur", JOptionPane.ERROR_MESSAGE);
+					}
+						
+				} catch (IOException e2) {
 					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					e2.printStackTrace();
 				}
-				interfaceContacts.setVisible(true);
-				//fermeture fenêtre actuelle
-				dispose();
-				
-				
-				
+					
 			}
 			
 			if (e.getSource()==photoMod){
 				
-				list.get(ind).setCivilite((String)civiliteC.getSelectedItem());;
-				list.get(ind).setFirstName(firstnameF.getText());
-				list.get(ind).setLastName(lastnameF.getText());
-				list.get(ind).setPhoneNumber(phoneF.getText());
-				
-				FrameGallerie selectPicture = null;
-				selectPicture = new FrameGallerie(1,2,ind,list);
-				selectPicture.setVisible(true);
-				//fermeture fenêtre actuelle
-				dispose();
-				
-				
-				
+				try {
+					Contact contactToControl = new Contact(lastnameF.getText(),firstnameF.getText(),phoneF.getText());
+					boolean controlIsEquals;
+					boolean controlIsEmpty;
+					controlIsEquals = contactToControl.contactControl(list);
+					controlIsEmpty = contactToControl.contactIsEmpty();
+					if(controlIsEquals == true && controlIsEmpty == true){
+					
+						list.get(ind).setCivilite((String)civiliteC.getSelectedItem());;
+						list.get(ind).setFirstName(firstnameF.getText());
+						list.get(ind).setLastName(lastnameF.getText());
+						list.get(ind).setPhoneNumber(phoneF.getText());
+						
+						FrameGallerie selectPicture = null;
+						selectPicture = new FrameGallerie(1,2,ind,list);
+						selectPicture.setVisible(true);
+						//fermeture fenêtre actuelle
+						dispose();
+					
+					}else
+					{
+						//Message d'erreur en cas de problème de contact déjà existant.
+						JOptionPane.showMessageDialog(null, "Contact vide ou identique. \n Veuillez corriger votre enregistrement", "Erreur", JOptionPane.ERROR_MESSAGE);
+					}
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}	
 			}
 			
 			//Boutton supprimer contact

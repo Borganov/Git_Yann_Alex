@@ -174,7 +174,7 @@ public class FrameContactAdd extends FrameGeneral{
 				else
 				{
 					//Message d'erreur en cas de problème de contact déjà existant.
-					JOptionPane.showMessageDialog(null, "Deux contacts portent le même nom. \n Veuillez corriger votre enregistrement", "Erreur", JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Contact vide ou identique. \n Veuillez corriger votre enregistrement", "Erreur", JOptionPane.ERROR_MESSAGE);
 				}
 
 				
