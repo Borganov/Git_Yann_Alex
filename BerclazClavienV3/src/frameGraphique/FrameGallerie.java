@@ -33,7 +33,6 @@ public class FrameGallerie extends FrameGeneral {
 	  //Boutton avancer et reculer
 	  private JButton next = new JButton(new ImageIcon(getClass().getResource("/next.png")));
 	  private JButton previous = new JButton(new ImageIcon(getClass().getResource("/previous.png")));
-	  private JButton addPhoto = new JButton("+");
 
 	  private JPanel gallerie = new JPanel();
 
@@ -90,10 +89,6 @@ public class FrameGallerie extends FrameGeneral {
 				previous.setBounds(30, 590, 70, 40);
 			  }
 		  }
-		  
-		  add(addPhoto);
-		  addPhoto.addActionListener(ecouteur);
-		  addPhoto.setBounds(150,590,70,40);
 		  
 		  //instancie les photos de ImagesGallerie et les mets dans la grille
 		 int k=(noPage-1)*15;
@@ -170,10 +165,6 @@ public class FrameGallerie extends FrameGeneral {
 			  }
 		  }
 		  
-		  add(addPhoto);
-		  addPhoto.addActionListener(ecouteur);
-		  addPhoto.setBounds(150,590,70,40);
-		  
 		  //instancie les photos de ImagesGallerie et les mets dans la grille
 		 int k=(noPage-1)*15;
 		 int y =0;
@@ -230,18 +221,6 @@ public class FrameGallerie extends FrameGeneral {
 					}
 				}
 				
-				if(e.getSource()==addPhoto){
-					JFileChooser chooser = new JFileChooser(); 
-					chooser.setCurrentDirectory(new File("/")); 
-					chooser.changeToParentDirectory(); 
-					chooser.showOpenDialog(null);
-					chooser.getSelectedFile();
-					File img = chooser.getSelectedFile();
-					System.out.println(img.getAbsolutePath());
-
-					java.nio.file.Path source =  Paths.get(img.getPath());
-					java.nio.file.Path cible = Paths.get("/ImagesGallerie");
-				}
 				
 				if (e.getSource()==getBoutonHome()){
 					if(source==2){

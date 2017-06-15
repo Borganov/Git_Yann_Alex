@@ -40,7 +40,7 @@ public class FrameWalker extends FrameGeneral{
 		
 		soft = new JLabel(list[i]);
 		labelCenter.add(soft);
-		soft.setBounds(100, 300, 380, 100);
+		soft.setBounds(100, 230, 380, 100);
 		soft.setBackground(null);
 		soft.setFont(start);
 		soft.setForeground(Color.white);

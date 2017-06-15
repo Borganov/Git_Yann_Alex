@@ -146,7 +146,7 @@ public class FrameContactAdd extends FrameGeneral{
 				boolean controlIsEquals;
 				boolean controlIsEmpty;
 				
-				futurContact.setprofilPath("/profil.jpg");
+				futurContact.setprofilPath("./Icones/profil.jpg");
 				futurContact.setFirstName(firstnameF.getText());
 				futurContact.setLastName(lastnameF.getText());
 				futurContact.setPhoneNumber(phoneF.getText());
@@ -198,23 +198,41 @@ public class FrameContactAdd extends FrameGeneral{
 			
 			//Boutton modifier photo
 			if (e.getSource()==photoMod){
-				
-				//System.out.println(list.lastIndexOf(list)+1);
-				futurContact.setprofilPath("./Icones/profil.jpg");
-				futurContact.setFirstName(firstnameF.getText());
-				futurContact.setLastName(lastnameF.getText());
-				futurContact.setPhoneNumber(phoneF.getText());
-				futurContact.setCivilite((String)civiliteC.getSelectedItem());
-				
-				list.add(futurContact);
-				int ind  = list.lastIndexOf(list)+1;
-				
-				
-				FrameGallerie selectPicture = null;
-				selectPicture = new FrameGallerie(1,2,ind,list);
-				selectPicture.setVisible(true);
-				//fermeture fenêtre actuelle
-				dispose();
+				try {
+					Contact contactToControl = new Contact(lastnameF.getText(),firstnameF.getText(),phoneF.getText());
+					boolean controlIsEquals;
+					boolean controlIsEmpty;
+					controlIsEquals = contactToControl.contactControl(list);
+					controlIsEmpty = contactToControl.contactIsEmpty();
+					if(controlIsEquals == true && controlIsEmpty == true){
+						
+						//System.out.println(list.lastIndexOf(list)+1);
+						futurContact.setprofilPath("./Icones/profil.jpg");
+						futurContact.setFirstName(firstnameF.getText());
+						futurContact.setLastName(lastnameF.getText());
+						futurContact.setPhoneNumber(phoneF.getText());
+						futurContact.setCivilite((String)civiliteC.getSelectedItem());
+						
+						list.add(futurContact);
+						int ind  = list.lastIndexOf(list)+1;
+						
+						
+						FrameGallerie selectPicture = null;
+						selectPicture = new FrameGallerie(1,2,ind,list);
+						selectPicture.setVisible(true);
+						//fermeture fenêtre actuelle
+						dispose();
+						
+					}else
+					{
+						//Message d'erreur en cas de problème de contact déjà existant.
+						JOptionPane.showMessageDialog(null, "Contact vide ou identique. \n Veuillez corriger votre enregistrement", "Erreur", JOptionPane.ERROR_MESSAGE);
+					}
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+
 				
 			}
 			
