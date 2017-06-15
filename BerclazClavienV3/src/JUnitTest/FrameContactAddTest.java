@@ -13,7 +13,7 @@ public class FrameContactAddTest {
 
 	@Test
 	public void testContactControl() throws IOException {
-		
+
 		Contact ab = new Contact("Alexandre", "Berclaz", "12");
 		Contact yc = new Contact("Yann", "Clavien", "182");
 		
