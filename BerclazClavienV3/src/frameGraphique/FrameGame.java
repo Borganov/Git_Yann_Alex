@@ -32,10 +32,10 @@ public class FrameGame extends FrameGeneral {
 	private JCheckBox choice2; 
 	private JCheckBox choice3;
 	
-	int alea;
-	int cptScore;
+	private int alea;
+	private int cptScore;
 
-	JButton next = new JButton("Passer à la prochaine question");
+	private JButton next = new JButton("Passer à la prochaine question");
 	
 	public FrameGame(int s){
 		cptScore = s;

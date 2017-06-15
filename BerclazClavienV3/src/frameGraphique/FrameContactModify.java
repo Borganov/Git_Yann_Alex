@@ -23,22 +23,22 @@ import frameGraphique.FrameGallerie.Ecouteurs;
 public class FrameContactModify extends FrameGeneral{
 	
 	
-	JLabel civiliteL = new JLabel("Civilité :");
-	JLabel firstnameL = new JLabel("Prénom :");
-	JLabel lastnameL = new JLabel("Nom :");
-	JLabel phoneL = new JLabel("N° de téléphone :");
-	JLabel title = new JLabel("Modifier un contact");
+	private JLabel civiliteL = new JLabel("Civilité :");
+	private JLabel firstnameL = new JLabel("Prénom :");
+	private JLabel lastnameL = new JLabel("Nom :");
+	private JLabel phoneL = new JLabel("N° de téléphone :");
+	private JLabel title = new JLabel("Modifier un contact");
 	
-	JTextField firstnameF = new JTextField();
-	JTextField lastnameF = new JTextField();
-	JTextField phoneF = new JTextField();
+	private JTextField firstnameF = new JTextField();
+	private JTextField lastnameF = new JTextField();
+	private JTextField phoneF = new JTextField();
 	
-	String[] civiliteList = {"Monsieur", "Madame"};
-	JComboBox<String> civiliteC = new JComboBox<String>(civiliteList);	
+	private String[] civiliteList = {"Monsieur", "Madame"};
+	private JComboBox<String> civiliteC = new JComboBox<String>(civiliteList);	
 	
-	JButton save = new JButton(new ImageIcon(getClass().getResource("/save.png")));
-	JButton delete = new JButton(new ImageIcon(getClass().getResource("/delete.png")));
-	JButton photoMod = new JButton(new ImageIcon(getClass().getResource("/modify.png")));
+	private JButton save = new JButton(new ImageIcon(getClass().getResource("/save.png")));
+	private JButton delete = new JButton(new ImageIcon(getClass().getResource("/delete.png")));
+	private JButton photoMod = new JButton(new ImageIcon(getClass().getResource("/modify.png")));
 	
 	private ArrayList<Contact> list;
 	private int ind;

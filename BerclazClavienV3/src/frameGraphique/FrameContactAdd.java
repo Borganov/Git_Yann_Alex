@@ -26,21 +26,21 @@ import frameGraphique.FrameContactModify.Ecouteurs;
 
 public class FrameContactAdd extends FrameGeneral{
 	
-	JLabel civiliteL = new JLabel("Civilité :");
-	JLabel firstnameL = new JLabel("Prénom :");
-	JLabel lastnameL = new JLabel("Nom :");
-	JLabel phoneL = new JLabel("N° de téléphone :");
-	JLabel title = new JLabel("Nouveau contact");
+	private JLabel civiliteL = new JLabel("Civilité :");
+	private JLabel firstnameL = new JLabel("Prénom :");
+	private JLabel lastnameL = new JLabel("Nom :");
+	private JLabel phoneL = new JLabel("N° de téléphone :");
+	private JLabel title = new JLabel("Nouveau contact");
 	
-	JTextField firstnameF = new JTextField();
-	JTextField lastnameF = new JTextField();
-	JTextField phoneF = new JTextField();
-	String[] civiliteList = {"Monsieur", "Madame"};
-	JComboBox<String> civiliteC = new JComboBox<String>(civiliteList);
+	private JTextField firstnameF = new JTextField();
+	private JTextField lastnameF = new JTextField();
+	private JTextField phoneF = new JTextField();
+	private String[] civiliteList = {"Monsieur", "Madame"};
+	private JComboBox<String> civiliteC = new JComboBox<String>(civiliteList);
 	
-	JButton save = new JButton(new ImageIcon(getClass().getResource("/save.png")));
-	JButton cancel = new JButton(new ImageIcon(getClass().getResource("/cancel.png")));
-	JButton photoMod = new JButton(new ImageIcon(getClass().getResource("/modify.png")));
+	private JButton save = new JButton(new ImageIcon(getClass().getResource("/save.png")));
+	private JButton cancel = new JButton(new ImageIcon(getClass().getResource("/cancel.png")));
+	private JButton photoMod = new JButton(new ImageIcon(getClass().getResource("/modify.png")));
 	
 	private ArrayList<Contact> list;
 	private Contact futurContact = new Contact();
@@ -51,9 +51,6 @@ public class FrameContactAdd extends FrameGeneral{
 		Font subtitleFont= new Font("Verdana",Font.BOLD,13);
 		Font contentFont = new Font("Verdana",Font.BOLD,12);
 		
-		
-		Font subtitle= new Font("Verdana",Font.BOLD,13);//SUP
-		Font content = new Font("Verdana",Font.BOLD,12);//SUP
 		//Ajout du titre de la fenêtre
 		add(title);
 		title.setBounds(100,30,300,20);

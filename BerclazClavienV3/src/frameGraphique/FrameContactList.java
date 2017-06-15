@@ -30,15 +30,15 @@ public class FrameContactList extends FrameGeneral{
 	private JList listContact ;
 	
 	//Ajout du boutton nouveau contact
-	JButton newContact = new JButton(new ImageIcon(getClass().getResource("/add.png")));
+	private JButton newContact = new JButton(new ImageIcon(getClass().getResource("/add.png")));
 	
 	//Font de la liste
-	Font fontList = new Font("Verdana",Font.BOLD,16);
+	private Font fontList = new Font("Verdana",Font.BOLD,16);
 	//Font du titre
-	Font titleFont = new Font("Verdanan", Font.BOLD, 24);
+	private Font titleFont = new Font("Verdanan", Font.BOLD, 24);
 	
 	//Ajout du titre de Contact liste
-	JLabel titre = new JLabel("Liste de contacts");
+	private JLabel titre = new JLabel("Liste de contacts");
 	
 	
 	FrameContactList() throws ClassNotFoundException, IOException{
