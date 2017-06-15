@@ -1,13 +1,22 @@
 package contact;
 
 public class Question {
-	
+
 	private String question;
 	private String response1;
 	private String response2;
 	private String response3;
 	private int response;
 	
+	/**
+	 * 
+	 * @param question énoncé de la question
+	 * @param response1 proposition de réponse 1
+	 * @param response2 proposition de réponse 2
+	 * @param response3 proposition de réponse 3
+	 * @param response numéro de l'énnoncé correcte
+	 */
+
 	public Question(String question, String response1, String response2, String response3, int response) {
 		super();
 		this.question = question;
@@ -56,9 +65,13 @@ public class Question {
 	public void setResponse(int response) {
 		this.response = response;
 	}
-	
+	/**
+	 * Méthode pour tester si la réponse sélectionnée par le joueur est exacte
+	 * @param select récupère l'énnoncé selectionné par le joueur
+	 * @return initialisé à true, le change en false si la propositon sélectionnée par le joueur ne correspond pas à la réponse initialisé par le programmeur
+	 */
 	public boolean reponseControl(int select){
-		
+
 		boolean reponse =true;
 		if(select!=getResponse()){
 		reponse=false;

@@ -14,7 +14,7 @@ import javax.swing.SwingConstants;
 
 
 public class FramePrincipal extends FrameGeneral {
-	
+
 	//création du panel central
 	private JLabel labelCenter = new JLabel(new ImageIcon(getClass().getResource("/wallpaper.jpg")));
 	
@@ -27,7 +27,7 @@ public class FramePrincipal extends FrameGeneral {
 
 
 	public FramePrincipal(){
-		
+
 		
 		//ajout du panel central
 		add(labelCenter, BorderLayout.CENTER);
@@ -94,8 +94,9 @@ public class FramePrincipal extends FrameGeneral {
 		
 		//Modification couleur heure
 		getLabelHeure().setForeground(Color.white);
+
 	}
-	
+
 	public class Ecouteurs implements ActionListener{
 		//définition du clique sur les bouton contacts et gallerie
 		public void actionPerformed(ActionEvent e){
@@ -140,10 +141,8 @@ public class FramePrincipal extends FrameGeneral {
 				FrameGame game = new FrameGame(0);
 				game.setVisible(true);
 				dispose();
-				
+
 			}
-		
 		}
 	}
-
 }

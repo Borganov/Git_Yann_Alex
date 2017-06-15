@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 import contact.Contact;
 
 public class FrameGallerie extends FrameGeneral {
-	  
+
 	  //stocker le nombre de photos
 	 private int nombrePhotos;
 	 private File folder = new File("./ImagesGallerie/");
@@ -36,7 +36,14 @@ public class FrameGallerie extends FrameGeneral {
 	  private int noPage;
 	  private int t;
 	  
+	  /**
+	   * Constructeur de la galerie FrameGallerie
+	   * @param n retourne le numéro de la page
+	   * @param source 
+	   */
+	  
 	  public FrameGallerie(int n, int source){
+
 		  this.source = source;
 		  this.noPage = n;
 		  add(gallerie);
@@ -87,7 +94,7 @@ public class FrameGallerie extends FrameGeneral {
 		  //instancie les photos de ImagesGallerie et les mets dans la grille
 		 int k=(noPage-1)*15;
 		 int y =0;
-		 
+
 		for(int j = 0; j< 5 ;j++){
 		  for (int i = 0; i < 3; i++) {
 			  if(k<nombrePhotos){
@@ -108,7 +115,13 @@ public class FrameGallerie extends FrameGeneral {
 		}
 		
 	}
-	  
+	  /**
+	   * Constructeur de la galerie FrameContactModify. Ajout d'une photo à un contact
+	   * @param n
+	   * @param source
+	   * @param ind
+	   * @param contactList
+	   */
 	  public FrameGallerie(int n, int source, int ind, ArrayList<Contact> contactList){
 		  this.source = source;
 		  this.noPage = n;
@@ -183,7 +196,7 @@ public class FrameGallerie extends FrameGeneral {
 		}
 		
 	}
-	  
+
 		public class Ecouteurs implements ActionListener{
 
 			@Override
@@ -215,7 +228,7 @@ public class FrameGallerie extends FrameGeneral {
 					}
 				}
 				
-				
+
 				if (e.getSource()==getBoutonHome()){
 					if(source==2){
 						try {
@@ -247,26 +260,33 @@ public class FrameGallerie extends FrameGeneral {
 		}
 			
 	}
-		
+
 		public class Ecouteur implements ActionListener{
 			File[] list;
 			int k;
 			int nombrePhotos;
 			
+			/**
+			 * 
+			 * @param list
+			 * @param k
+			 * @param nombrePhotos
+			 * @param noPage
+			 */
 			public Ecouteur(File [] list, int k, int nombrePhotos, int noPage)
 			{
 				this.list = list;
 				this.k = k;
 				this.nombrePhotos=nombrePhotos;
 			}
-			
+
 			public void actionPerformed(ActionEvent e) {
 				if(source==1){
 					FrameDefile defile = new FrameDefile(list, k, nombrePhotos, noPage);
 					defile.setVisible(true);
 					dispose();
 				}
-				
+
 				if(source==2){
 					
 					contactList.get(index).setprofilPath(list[k].getPath());
@@ -285,7 +305,12 @@ public class FrameGallerie extends FrameGeneral {
 			
 		}
 		
-		//Méthode de sérialisation des contacts
+		
+		/**
+		 * Méthode de sérialisation des contacts
+		 * @param listcontact
+		 * @throws IOException
+		 */
 		private static void UploadDataContact(ArrayList<Contact> listcontact) throws IOException {
 			
 			for (int i = 0; i < listcontact.size(); i++) {

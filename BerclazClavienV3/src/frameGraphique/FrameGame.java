@@ -32,8 +32,12 @@ public class FrameGame extends FrameGeneral {
 	private int cptScore;
 
 	private JButton next = new JButton("Passer à la prochaine question");
-	
+	/**
+	 * 
+	 * @param s récupère le score de la fenêtre précédente pour le compter de fenêtre en fenêtre
+	 */
 	public FrameGame(int s){
+
 		cptScore = s;
 		Font titleFont = new Font("Verdanan", Font.BOLD, 24);
 		Font subtitleFont= new Font("Verdana",Font.BOLD,13);
@@ -100,17 +104,17 @@ public class FrameGame extends FrameGeneral {
 		choice2.addActionListener(ecouteur);
 		choice3.addActionListener(ecouteur);
 		next.addActionListener(ecouteur);
-		
+
 	}
-	
+
 	public class Ecouteur implements ActionListener{
-		
+
 		private int select;
 		boolean reponseControl;
-		
+
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
+
 			if (e.getSource()==choice1){
 				select=1;
 				}
@@ -120,7 +124,7 @@ public class FrameGame extends FrameGeneral {
 			if (e.getSource()==choice3){
 				select=3;
 			}
-			
+
 			reponseControl = questions[alea].reponseControl(select);
 			
 			if(reponseControl==true){
@@ -160,7 +164,7 @@ public class FrameGame extends FrameGeneral {
 			if (e.getSource()==getBoutonOff()){
 				//éteindre le téléphone
 				dispose();
-				}
+			}
 		}
 	}
 }

@@ -21,15 +21,22 @@ public class FrameDefile extends FrameGeneral{
 	private JButton delete = new JButton(new ImageIcon(getClass().getResource("/delete.png")));
 	private JButton retour = new JButton(new ImageIcon(getClass().getResource("/ic_list_black_24dp.png")));
 
+	/**
+ * 
+ * @param list passe la liste des photos présente dans le source folder ImagesGallerie
+ * @param k donne le numéro de la photo dans la liste
+ * @param nombrePhotos donne le nombre de photos dans la list
+ * @param noPage donne le numéro de page dans laquelle la photo se trouve dans FrameGallerie
+ */
 	
 	public FrameDefile(File [] list, int k, int nombrePhotos, int noPage){
-		
+
 		JButton photo = new JButton(new ImageIcon(new ImageIcon(list[k].getPath()).getImage().getScaledInstance(-1, 300, Image.SCALE_FAST)));
 		photo.setPreferredSize(new Dimension(150 ,150));
 		photo.setOpaque(false);
 		photo.setContentAreaFilled(false);
 		photo.setBorderPainted(false);
-	
+
 		add(panelPhoto, BorderLayout.CENTER);
 		panelPhoto.setLayout(null);
 		panelPhoto.setBounds(25, 30, 350, 550);
@@ -79,6 +86,7 @@ public class FrameDefile extends FrameGeneral{
 		previous.addActionListener(ecouteur);
 		delete.addActionListener(ecouteur);
 		retour.addActionListener(ecouteur);
+		
 	}
 
 	public class Ecouteurs implements ActionListener{
@@ -89,11 +97,12 @@ public class FrameDefile extends FrameGeneral{
 		int noPage;
 		
 		public Ecouteurs(File [] list, int k, int nombrePhotos, int noPage){
-			
+
 			this.list = list;
 			this.k = k;
 			this.nombrePhotos=nombrePhotos;
 			this.noPage=noPage;
+
 		}
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -131,7 +140,8 @@ public class FrameDefile extends FrameGeneral{
 			gallerie.setVisible(true);
 			dispose();
 			list[k].delete();
-		}
+
+			}
 		}
 	}
 }

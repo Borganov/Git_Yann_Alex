@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 //squelette du téléphone
 
 public abstract class FrameGeneral extends JFrame{
-	
+
 	private JPanel panelNorth = new JPanel();
 	private JPanel panelSouth = new JPanel();
 	private JPanel panelEast = new JPanel();
@@ -29,7 +29,7 @@ public abstract class FrameGeneral extends JFrame{
 	private JButton boutonOff = new JButton("");
 	
 	private SimpleDateFormat heure;
-	
+
 	// getters et setters pour les boutons Home et Off
 	public JButton getBoutonHome() {
 		return boutonHome;
@@ -55,9 +55,8 @@ public abstract class FrameGeneral extends JFrame{
 		this.labelHeure = labelHeure;
 	}
 
-
 	public FrameGeneral(){
-	
+
 		//enlève les boutons de contrôle
 		setUndecorated(true);
 		//dimentionne la fenêtre
